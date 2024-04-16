@@ -6,7 +6,7 @@ using namespace std;
 const int MXN = 2e6;
 
 /**
- * @brief Disjoint Set (Union-Find) 並查集
+ * @brief 併查集 (Disjoint Set)
  */
 struct DSU {
     int n;
@@ -22,19 +22,24 @@ struct DSU {
         }
     }
 
+    /**
+     * @brief 返回 x 的根節點
+     */
     int find(int x) {
-        if (x == f[x])  // 如果當前節點為 f[x]==x
-            return x;   // 則為根節點
-        f[x] = find(f[x]);
-        return f[x];
+        if (x == f[x])
+            return x;
+        return f[x] = find(f[x]);
     }
 
+    /**
+     * @brief 將 x 和 y 合併在一起
+     */
     void merge(int x, int y) {
         x = find(x), y = find(y);
         if (x == y)
             return;
-        if (sz[x] < sz[y])
-            swap(x, y);  // 將 x 變成大的
+        if (sz[x] < sz[y])  // 將小的併入大的
+            swap(x, y);
         sz[x] += sz[y];
         f[y] = x;
     }
