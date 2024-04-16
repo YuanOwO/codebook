@@ -1,0 +1,17 @@
+BasedOnStyle: Google
+
+ColumnLimit: 72
+IndentWidth: 4
+PPIndentWidth: 2
+IndentCaseLabels: false
+IndentPPDirectives: AfterHash
+UseTab: Never
+TabWidth: 4
+
+AlignArrayOfStructures: Left
+AllowShortBlocksOnASingleLine: Empty
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+InsertNewlineAtEOF: true
+RemoveSemicolon: true
