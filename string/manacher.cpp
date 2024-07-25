@@ -1,7 +1,25 @@
+// 用法: 呼叫z_value_pal()並傳入相對應的東西，ret即為最長迴文
 const int MAXN = 1e6 + 5;
 int ans[MAXN << 1];
 char s[MAXN << 1];
 string ret;  // 迴文字串儲存結果
+
+void find_palindrome(char *s, int len, int *z) {
+    int idx = 0, mx = -1;
+    for (int i = 0; i < len; i++) {  // 找迴文半徑最大值
+        if (mx < ans[i]) {
+            idx = i;
+            mx = ans[i];
+        }
+    }
+    for (int i = idx - mx + 1; i < idx; i++)
+        if (s[i] != '@')
+            ret.push_back(s[i]);
+    for (int i = idx; i <= idx + mx - 1; i++)
+        if (s[i] != '@')
+            ret.push_back(s[i]);
+    // cout << ret << '\n';
+}
 
 void z_value_pal(char *s, int len, int *z) {  // 字串，長度，輸出的陣列
     len = (len << 1) + 1;
@@ -17,18 +35,4 @@ void z_value_pal(char *s, int len, int *z) {  // 字串，長度，輸出的陣�
             l = i, r = i + z[i];
     }
     find_palindrome(s, strlen(s), z);
-}
-
-void find_palindrome(char *s, int len, int *z) {
-    int idx = 0, mx = -1;
-    for (int i = 0; i < len; i++)  // 找迴文半徑最大值
-        if (mx < z[i])
-            idx = i, mx = z[i];
-    for (int i = idx - mx + 1; i < idx; i++)  // 把結果塞進ret
-        if (s[i] != '@')
-            ret.push_back(s[i]);
-    for (int i = idx; i <= idx + mx - 1; i++)
-        if (s[i] != '@')
-            ret.push_back(s[i]);
-    // cout << ret << '\n';
 }
