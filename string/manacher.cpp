@@ -21,13 +21,10 @@ void z_value_pal(char *s, int len, int *z) {  // 字串，長度，輸出的陣�
 
 void find_palindrome(char *s, int len, int *z) {
     int idx = 0, mx = -1;
-    for (int i = 0; i < len; i++) {  // 找迴文半徑最大值
-        if (mx < ans[i]) {
-            idx = i;
-            mx = ans[i];
-        }
-    }
-    for (int i = idx - mx + 1; i < idx; i++)
+    for (int i = 0; i < len; i++)  // 找迴文半徑最大值
+        if (mx < z[i])
+            idx = i, mx = z[i];
+    for (int i = idx - mx + 1; i < idx; i++)  // 把結果塞進ret
         if (s[i] != '@')
             ret.push_back(s[i]);
     for (int i = idx; i <= idx + mx - 1; i++)
