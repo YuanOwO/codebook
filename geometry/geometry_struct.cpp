@@ -38,6 +38,11 @@ struct Pt {
     bool operator<(const Pt &a) const {
         return x < a.x || (x == a.x && y < a.y);
     }
+    friend ld cross(Point a, Point b, Point o) {
+        // 行列式(叉乘)，存入三個點
+        Point p1 = a - o, p2 = b - o;
+        return p1.x * p2.y - p1.y * p2.x;
+    }
     // return dcmp(x-a.x) < 0 || (dcmp(x-a.x) == 0 && dcmp(y-a.y) < 0);
     // }
     bool operator==(const Pt &a) {
