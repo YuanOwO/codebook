@@ -1,8 +1,22 @@
 #define ld long double
+#define ll long long
+const ld eps = 1e-8;
+
+/**
+ * @brief 計算幾何的結構
+ *
+ * 備註: 注意資料型態
+ *
+ */
+int dcmp(ld x) {  // 處理小數點精度的東東
+    if (abs(x) < eps)
+        return 0;
+    else
+        return x < 0 ? -1 : 1;
+}
 struct Pt {
     ld x, y;
     Pt(ld _x = 0, ld _y = 0) : x(_x), y(_y) {}
-
     Pt operator+(const Pt &a) {
         return Pt(x + a.x, y + a.y);
     }
@@ -15,33 +29,50 @@ struct Pt {
     Pt operator/(const ld &a) {
         return Pt(x / a, y / a);
     }
-    ld operator*(const Pt &a) {  // 計算幾何程式碼中內積通常用*表示
+    ld operator*(const Pt &a) {  // 內積
         return x * a.x + y * a.y;
     }
-    ld operator^(const Pt &a) {  // 計算幾何程式碼中外積通常用^表示
+    ld operator^(const Pt &a) {  // 行列式(叉乘)
         return x * a.y - y * a.x;
     }
-    bool operator<(const Pt &a) const {  // 判斷兩點座標 先比 x 再比 y
+    bool operator<(const Pt &a) const {
         return x < a.x || (x == a.x && y < a.y);
     }
-    friend ld cross(Pt a, Pt b, Pt o) {
-        Pt p1 = a - o, p2 = b - o;
-        return p1.x * p2.y - p1.y * p2.x;
+    // return dcmp(x-a.x) < 0 || (dcmp(x-a.x) == 0 && dcmp(y-a.y) < 0);
+    // }
+    bool operator==(const Pt &a) {
+        return dcmp(x - a.x) == 0 && dcmp(y - a.y) == 0;
     }
+};
 
-    // for long long
-    bool collinearity(Pt &a, Pt &b, Pt &c) {
-        return ((b - a) ^ (c - a)) == 0;
-    }
-    bool inLine(Pt &p, Pt &a, Pt &b) {
-        return collinearity(a, b, p) && (a - p) * (b - p) < 0;
-    }
+ld norm2(const Pt &a) {  // 平方
+    return a * a;
+}
+ld norm(const Pt &a) {
+    return sqrt(norm2(a));
+}
+Pt perp(const Pt &a) {  // 與原本向量垂直的向量
+    return Pt(-a.y, a.x);
+}
+Pt rotate(const Pt &a, ld ang) {  // 旋轉矩陣
+    return Pt(a.x * cos(ang) - a.y * sin(ang),
+              a.x * sin(ang) + a.y * cos(ang));
+}
 
-    // for long double
-    bool collinearity(Pt &a, Pt &b, Pt &c, ld EPS) {
-        return ((b - a) ^ (c - a)) < EPS;
+struct Line {
+    Pt s, e, v;  // start, end, end-start
+    ld ang;
+    Line(Pt _s = Pt(0, 0), Pt _e = Pt(0, 0)) : s(_s), e(_e) {
+        v = e - s;
+        ang = atan2(v.y, v.x);
     }
-    bool inLine(Pt &p, Pt &a, Pt &b, ld EPS) {
-        return collinearity(a, b, p) && (a - p) * (b - p) < EPS;
+    bool operator<(const Line &L) const {
+        return ang < L.ang;
     }
+};
+
+struct Circle {
+    Pt o;
+    ld r;
+    Circle(Pt _o = Pt(0, 0), ld _r = 0) : o(_o), r(_r) {}
 };
