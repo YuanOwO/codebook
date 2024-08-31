@@ -19,7 +19,7 @@
  */
 
 ll mul(ll x, ll y, ll mod) {
-    ll ret = x * y - (LL)((long double)x / mod * y) * mod;
+    ll ret = x * y - (ll)((long double)x / mod * y) * mod;
     return ret < 0 ? ret + mod : ret;
     // return x * y % mod;  //// 如果數字大到需要開__int128就用這
 }
