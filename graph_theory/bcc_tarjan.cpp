@@ -6,7 +6,7 @@ const int MXN = 2e5 + 5;
  * @brief Tarjan's Algorithm for searching BCC
  *
  * 雙連通分量 Biconnected Component:
- * 不會產生割點使圖被分割成兩個團的圖
+ * 不會產生割點使圖被分割成兩個不連通的子圖
  *
  * 用法:
  * 1. init(n) 初始化圖 其中 n 為節點點數
