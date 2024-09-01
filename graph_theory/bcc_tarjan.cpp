@@ -11,10 +11,10 @@ const int MXN = 2e5 + 5;
  * 用法:
  * 1. init(n) 初始化圖 其中 n 為節點點數
  * 2. addEdge(u, v) 加入終點為 u, v 的無向邊
- * 3. solve()跑 BCC
- *    回傳二維 vector
- *    一維 vector 是橋 if size = 2
- *    一維 vector 是BCC if size > 2
+ * 3. solve()跑 BCC 回傳二維 vector
+ * 結果: 回傳的二維 vector 中
+ *       一維 vector 是橋 if size = 2
+ *       一維 vector 是BCC if size > 2
  */
 
 struct BccVertex {
