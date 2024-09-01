@@ -1,6 +1,22 @@
 #define PB push_back
 #define REP(i, n) for (int i = 0; i < n; i++)
 const int MXN = 2e5 + 5;
+
+/**
+ * @brief Tarjan's Algorithm for searching BCC
+ *
+ * 雙連通分量 Biconnected Component:
+ * 不會產生割點使圖被分割成兩個團的圖
+ *
+ * 用法:
+ * 1. init(n) 初始化圖 其中 n 為節點點數
+ * 2. addEdge(u, v) 加入終點為 u, v 的無向邊
+ * 3. solve()跑 BCC
+ *    回傳二維 vector
+ *    一維 vector 是橋 if size = 2
+ *    一維 vector 是BCC if size > 2
+ */
+
 struct BccVertex {
     int n, nScc, step, dfn[MXN], low[MXN];
     vector<int> E[MXN], sccv[MXN];
