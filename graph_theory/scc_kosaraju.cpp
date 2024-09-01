@@ -15,6 +15,8 @@ const int MXN = 2e5 + 5;
  * 結果:
  * - bln[i]: 第 i 個節點屬於的 SCC 編號為 bln[i]
  * - nScc: 強連通分量 SCC 數量
+ *
+ * 複雜度: O(n + m) 其中 n: 節點數 m: 邊數
  */
 
 struct Scc {
