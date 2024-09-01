@@ -17,6 +17,7 @@ const int MAXN = 2e5 + 5;
  * - 有向圖
  * - 可以用回朔法找到整顆支配樹
  *
+ * 複雜度: O(n + m)
  */
 
 struct DominatorTree {  // O(N)
