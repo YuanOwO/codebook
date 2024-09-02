@@ -1,15 +1,3 @@
-/**
- * @brief Pollard's rho Algorithm
- *
- * 用法: 呼叫 fact(n)
- * 結果: ret 存入質因數
- * 複雜度: pollard_rho: O(n^(1/4))
- * 備註:
- * -- ret 需排序
- * -- n是質數時不能用，建議搭配 Miller-Rabin
- *
- */
-
 vector<ll> ret;
 
 ll mul(ll x, ll y, ll mod) {
