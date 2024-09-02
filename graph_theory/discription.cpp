@@ -1,4 +1,16 @@
 /**
+ * @brief 拓樸排序
+ *
+ * 用法:
+ * 1. 存好邊與 deg
+ * 2. topo() 跑圖
+ * 結果: 存在 ans
+ * 備註:
+ * - 處理有向無環圖 DAG
+ * - 1-base
+ */
+
+/**
  * @brief Tarjan's Algorithm for searching BCC
  *
  * 雙連通分量 Biconnected Component:
