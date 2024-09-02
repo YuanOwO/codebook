@@ -3,7 +3,7 @@ vector<ll> ret;
 ll mul(ll x, ll y, ll mod) {
     ll ret = x * y - (LL)((long double)x / mod * y) * mod;
     return ret < 0 ? ret + mod : ret;
-    // return x * y % mod;  //// 如果數字大到需要開__int128就用這
+    // return x * y % mod;  //// for __int128
 }
 
 ll f(ll x, ll c, ll mod) {
