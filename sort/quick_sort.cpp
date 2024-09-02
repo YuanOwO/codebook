@@ -1,13 +1,3 @@
-/**
- * @brief 快速排序法
- * 時間複雜度 O(N log N)
- * 陣列區間 [l, r)
- *
- * @tparam T 可以比較大小的型別
- * @param arr 欲排序的陣列
- * @param l 陣列的左邊 (包含)
- * @param r 陣列的右邊 (不包含)
- */
 template <typename T>
 void quick_sort(T arr[], int l, int r) {
     // 陣列元素少於 1 直接結束
