@@ -1,18 +1,7 @@
-#include <algorithm>
-#include <vector>
-
-using namespace std;
-
-const int MXN = 2e6;
-
-/**
- * @brief 併查集 (Disjoint Set)
- */
 struct DSU {
     int n;
     vector<int> f, sz;
-
-    DSU(int _n) {
+    DSU(int _n) {  // 初始化
         n = _n;
         f.resize(n);
         sz.resize(n);
@@ -21,20 +10,12 @@ struct DSU {
             sz[i] = 1;
         }
     }
-
-    /**
-     * @brief 返回 x 的根節點
-     */
-    int find(int x) {
+    int find(int x) {  // 返回 x 的根節點
         if (x == f[x])
             return x;
         return f[x] = find(f[x]);
     }
-
-    /**
-     * @brief 將 x 和 y 合併在一起
-     */
-    void merge(int x, int y) {
+    void merge(int x, int y) {  // 將 x 和 y 合併
         x = find(x), y = find(y);
         if (x == y)
             return;
