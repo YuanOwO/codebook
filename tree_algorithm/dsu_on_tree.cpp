@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 int find(int x) {
     if (f[x] == x)
         return x;
