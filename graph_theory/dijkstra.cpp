@@ -1,21 +1,3 @@
-#define pii pair<int, int>
-#define INF 1e18
-const int N = 2e5 + 5;
-
-/**
- * @brief Dijkstra's Algorithm
- * 找單源最短路徑
- *
- * 用法: 呼叫 dijkstra(s) 其中 s 為起點
- * 結果: 回傳 dis[i]: 從 s 到 i 的最短路徑長
- * 備註:
- * - 注意資料型態
- * - vec 與 pq 存的資料是反的喔
- * - 邊權不可以有負的
- *
- * 複雜度: O(E + E * logV) 其中 E 是 邊數 V 是節點
- */
-
 vector<pii> vec[N];  // vec[u] = {v, w}: u 為起點 v 為終點 w 為路權
 bool vis[N];         // 紀錄該節點是否走過
 vector<int> dijkstra(int s) {  // 起點

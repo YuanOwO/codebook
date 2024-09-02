@@ -1,4 +1,7 @@
 #include <bits/stdc++.h>
+#define REP(i, n) for (int i = 0; i < n; i++)
+#define PB push_back
+#define SZ(x) (int)x.size()
 #define ll long long
 #define pii pair<int, int>
 #define INF 0x7f7f7f7f7f7f7f7fLL
