@@ -1,0 +1,263 @@
+\documentclass[a4paper,10pt,twocolumn,oneside]{article}
+\setlength{\columnsep}{10pt}                                                              %兩欄模式的間距
+\setlength{\columnseprule}{0pt}                                                                %兩欄模式間格線粗細
+
+\usepackage{amsthm}								%定義，例題
+\usepackage{amssymb}
+%\usepackage[margin=2cm]{geometry}
+\usepackage{fontspec}								%設定字體
+\usepackage{color}
+\usepackage[x11names]{xcolor}
+\usepackage{listings}								%顯示code用的
+%\usepackage[Glenn]{fncychap}						%排版，頁面模板
+\usepackage{fancyhdr}								%設定頁首頁尾
+\usepackage{graphicx}								%Graphic
+\usepackage{enumerate}
+\usepackage{titlesec}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{xpatch}
+\usepackage[CheckSingle, CJKmath]{xeCJK}
+% \usepackage{CJKulem}
+%\usepackage[T1]{fontenc}
+\titlespacing{\section}{0cm}{0cm}{0cm}
+\titlespacing{\subsection}{0cm}{0cm}{0cm}
+\usepackage{amsmath, courier, listings, fancyhdr, graphicx}
+\topmargin=0pt
+\headsep=5pt
+\textheight=780pt
+\footskip=0pt
+\voffset=-40pt
+\textwidth=545pt
+\marginparsep=0pt
+\marginparwidth=0pt
+\marginparpush=0pt
+\oddsidemargin=0pt
+\evensidemargin=0pt
+\hoffset=-42pt
+
+%\renewcommand\listfigurename{圖目錄}
+%\renewcommand\listtablename{表目錄} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setmainfont [				%主要字型
+    Path = .fonts/ttf/,
+    UprightFont = *-Regular,
+    BoldFont = *-Bold,
+    ItalicFont = *-Italic
+  ] {Consolas}
+
+\setmonofont [        
+    Path = .fonts/ttf/,
+    UprightFont = *-Regular
+  ] {Monaco}
+
+% \setmainfont{TeX Gyre Termes}
+% \setmainfont{Consolas}				%主要字型
+% \setmonofont{Monaco}				%主要字型
+\setCJKmainfont{Noto Sans CJK TC}
+
+% \setCJKmainfont{Consolas}			%中文字型
+% \setmainfont{sourcecodepro}
+\XeTeXlinebreaklocale "zh"						%中文自動換行
+\XeTeXlinebreakskip = 0pt plus 1pt				%設定段落之間的距離
+\setcounter{secnumdepth}{3}						%目錄顯示第三層
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\lst@CCPutMacro\lst@ProcessOther {"2D}{\lst@ttfamily{-{}}{-{}}}
+\@empty\z@\@empty
+\makeatother
+\lstset{											% Code顯示
+language=C++,										% the language of the code
+basicstyle=\footnotesize\ttfamily, 						% the size of the fonts that are used for the code
+%numbers=left,										% where to put the line-numbers
+numberstyle=\footnotesize,						% the size of the fonts that are used for the line-numbers
+stepnumber=1,										% the step between two line-numbers. If it's 1, each line  will be numbered
+numbersep=5pt,										% how far the line-numbers are from the code
+backgroundcolor=\color{white},					% choose the background color. You must add \usepackage{color}
+showspaces=false,									% show spaces adding particular underscores
+showstringspaces=false,							% underline spaces within strings
+showtabs=false,									% show tabs within strings adding particular underscores
+frame=false,											% adds a frame around the code
+tabsize=2,											% sets default tabsize to 2 spaces
+captionpos=b,										% sets the caption-position to bottom
+breaklines=true,									% sets automatic line breaking
+breakatwhitespace=false,							% sets if automatic breaks should only happen at whitespace
+escapeinside={\%*}{*)},							% if you want to add a comment within your code
+morekeywords={*},									% if you want to add more keywords to the set
+keywordstyle=\bfseries\color{Blue1},
+commentstyle=\itshape\color{Red4},
+stringstyle=\itshape\color{Green4},
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\pagestyle{fancy}
+\fancyfoot{}
+%\fancyfoot[R]{\includegraphics[width=20pt]{ironwood.jpg}}
+\fancyhead[L]{National Taiwan Ocean University Team: haruhikagerogerokonokositantan}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\contentsname}{Contents} 
+
+\scriptsize
+\tableofcontents
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \newpage
+
+\section{Basis}
+
+\subsection{Default Code}
+\lstinputlisting{basis/default_code.cpp}
+
+\subsection{Some Useful Primes}
+\lstinputlisting{basis/primes.cpp}
+
+\section{Data Structures}
+
+\subsection{Disjoint Set (Union-Find)}
+\lstinputlisting{data_structure/dsu.cpp}
+
+\subsection{Binary Indexed Tree}
+\lstinputlisting{data_structure/binary_indexed_tree.cpp}
+
+\subsection{Segment Tree}
+\lstinputlisting{data_structure/segment_tree.cpp}
+
+\section{Mathematics}
+
+\subsection{Combination with Inverse}
+\lstinputlisting{math/combinations_with_inverse.cpp}
+
+\subsection{EXGCD}
+\lstinputlisting{math/exgcd.cpp}
+
+\subsection{FFT}
+\lstinputlisting{math/fast_fourier_transform.cpp}
+
+\subsection{Exponentiation by Squaring}
+\lstinputlisting{math/fast_pow.cpp}
+
+\subsection{GCD and LCM}
+\lstinputlisting{math/gcd_lcm.cpp}
+
+\subsection{Miller-Rabin Algorithm}
+\lstinputlisting{math/miller_rabin.cpp}
+
+\subsection{Pollard's Rho Algorithm}
+\lstinputlisting{math/pollard_rho.cpp}
+
+\section{Graph}
+
+\subsection{Topological Sort}
+\lstinputlisting{graph_theory/topological_sort.cpp}
+
+\subsection{Tarjan's Algorithm for BCC}
+\lstinputlisting{graph_theory/bcc_tarjan.cpp}
+
+\subsection{Bellmen-Ford Algorithm}
+\lstinputlisting{graph_theory/bellmen_ford.cpp}
+
+\subsection{Dijkstra's Algorithm}
+\lstinputlisting{graph_theory/dijkstra.cpp}
+
+\subsection{Dinic's Algorithm for Maximum Flow}
+\lstinputlisting{graph_theory/dinic.cpp}
+
+\subsection{Dominator Tree}
+\lstinputlisting{graph_theory/dominator_tree.cpp}
+
+\subsection{Floyd-Warshall Algorithm}
+\lstinputlisting{graph_theory/floyd_warshall.cpp}
+
+\subsection{Maximum Clique}
+\lstinputlisting{graph_theory/maximum_clique.cpp}
+
+\subsection{Kosaraju's Algorithm for SCC}
+\lstinputlisting{graph_theory/scc_kosaraju.cpp}
+
+\section{Tree Algorithms}
+
+\subsection{Lowest Common Ancester}
+\lstinputlisting{tree_algorithm/lowest_common_ancester.cpp}
+
+\subsection{Eular Tour for LCA}
+\lstinputlisting{tree_algorithm/eular_tour_for_lca.cpp}
+
+\subsection{DSU on Tree}
+\lstinputlisting{tree_algorithm/dsu_on_tree.cpp}
+
+\section{String Algorithms}
+
+\subsection{Suffix Array (SAIS)}
+\lstinputlisting{string/SAIS.cpp}
+
+\subsection{Z-algorithm}
+\lstinputlisting{string/z_algorithm.cpp}
+
+\subsection{Knuth-Morris-Pratt Algorithm}
+\lstinputlisting{string/KMP.cpp}
+
+\subsection{Manacher's Algorithm}
+\lstinputlisting{string/manacher.cpp}
+
+\subsection{Minimum Rotation}
+\lstinputlisting{string/min_rotation.cpp}
+
+\subsection{Rolling Hash}
+\lstinputlisting{string/rolling_hash.cpp}
+
+\section{Geometry}
+
+\subsection{Basic Geometry Structure}
+\lstinputlisting{geometry/geometry_struct.cpp}
+
+\subsection{Circle Cover Area}
+\lstinputlisting{geometry/circle_cover.cpp}
+
+\subsection{Circles' Tangent Lines}
+\lstinputlisting{geometry/circle_tangent_line.cpp}
+
+\subsection{Circles' Intersections}
+\lstinputlisting{geometry/circle_intersection.cpp}
+
+\subsection{Convex Hull}
+\lstinputlisting{geometry/convex_hull.cpp}
+
+\subsection{Convex Hull Tricks}
+\lstinputlisting{geometry/convex_hull_tricks.cpp}
+
+\subsection{Pick's Theory}
+\lstinputlisting{geometry/picks_theory.cpp}
+
+\section{Sorting}
+
+\subsection{Merge Sort}
+\lstinputlisting{sort/merge_sort.cpp}
+
+\subsection{Quick Sort}
+\lstinputlisting{sort/quick_sort.cpp}
+
+\section{Other Useful Shit}
+
+\subsection{Discretization}
+\lstinputlisting{other/discretization.cpp}
+
+\subsection{The Most Useful One}
+\lstinputlisting{other/blessing.cpp}
+
+%\subsection{\# of Intersection of segments}
+%\lstinputlisting{others/painter.cpp}
+
+% \lstinputlisting{others/funny.cpp}
+% \centering
+\begin{tikzpicture}[every node/.style={minimum size=1cm-\pgflinewidth, outer sep=10pt}, scale=2]
+    \draw[step=0.2cm,color=gray] (0,0) grid (4,13);
+    \draw[step=1cm,color=black,line width=0.4mm] (0,0) grid (4,13);
+\end{tikzpicture}
+
+\end{document}
