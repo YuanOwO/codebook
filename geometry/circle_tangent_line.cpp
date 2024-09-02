@@ -1,18 +1,3 @@
-/**
- * @brief 兩圓公切線
- *
- * @param c1 圓1的結構
- * @param c2 圓2的結構
- * @param sign1 1: 外公切線; -1: 內公切線
- *
- * @return 兩圓的公切線
- *
- * 備註:
- * 回傳的 vector<Line> 中
- * 第一個是圓1的切點
- * 第二個是圓2的切點
- */
-
 vector<Line> go(const Circle& c1, const Circle& c2, int sign1) {
     // sign1 = 1 for outer tang, -1 for inter tang
     vector<Line> ret;

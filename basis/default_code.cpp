@@ -3,8 +3,10 @@
 #define PB push_back
 #define SZ(x) (int)x.size()
 #define ll long long
+#define ld long double
 #define pii pair<int, int>
 #define INF 0x7f7f7f7f7f7f7f7fLL
+#define all(x) x.begin(), x.end()
 using namespace std;
 const int MXN = 2e6 + 5;
 const int MOD = 1e9 + 7;

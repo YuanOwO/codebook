@@ -1,16 +1,3 @@
-/**
- * @brief 計算圓面積
- *
- * 用法:
- * 1. 初始化 init(c) 其中 c 為圓的數量
- * 2. 填入圓心與半徑到 Circle c[N] 之中
- * 3. 算出答案 solve()
- * 結果: Area[i] 為至少包括 i 個圓的覆蓋面積
- *
- * 時間複雜度: O((n^2)logn)
- *
- */
-
 struct CircleCover {
     int C;
     Circle c[N];  // 填入C(圓數量),c(圓陣列)

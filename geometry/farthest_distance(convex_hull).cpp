@@ -1,7 +1,3 @@
-#include <algorithm>
-#include <iostream>
-#include <vector>
-using namespace std;
 struct Pt {
     int x, y;
     Pt() {}

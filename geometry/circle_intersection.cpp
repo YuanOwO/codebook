@@ -1,16 +1,3 @@
-/**
- * @brief 兩圓交點
- *
- * @param o1 圓1的圓心座標
- * @param r1 圓1的半徑
- * @param o2 圓2的圓心座標
- * @param r2 圓2的半徑
- *
- * @return 兩圓的交點
- *
- * 備註: 回傳 vector 如果為空 就是沒交點
- */
-
 vector<Pt> interCircle(Pt o1, ld r1, Pt o2, ld r2) {
     if (norm(o1 - o2) > r1 + r2)
         return {};

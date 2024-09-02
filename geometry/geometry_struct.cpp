@@ -1,13 +1,3 @@
-#define ld long double
-#define ll long long
-const ld eps = 1e-8;
-
-/**
- * @brief 計算幾何的結構
- *
- * 備註: 注意資料型態
- *
- */
 int dcmp(ld x) {  // 處理小數點精度的東東
     if (abs(x) < eps)
         return 0;
