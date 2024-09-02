@@ -7,6 +7,7 @@
 #define pii pair<int, int>
 #define INF 0x7f7f7f7f7f7f7f7fLL
 #define all(x) x.begin(), x.end()
+#define D double
 using namespace std;
 const int MXN = 2e6 + 5;
 const int MOD = 1e9 + 7;
