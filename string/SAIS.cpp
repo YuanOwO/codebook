@@ -1,7 +1,6 @@
 // 此為後綴陣列模板
 // 用法:
 // 把要處理的字串轉成整數陣列傳入suffix_array()，會得到SA與H維結果
-
 const int N = 500010;  // 有可能要在這就寫原本字串的兩倍長
 struct SA {
 #define REP(i, n) for (int i = 0; i < int(n); i++)

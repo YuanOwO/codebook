@@ -3,7 +3,6 @@ const int MAXN = 1e6 + 5;
 int ans[MAXN << 1];
 char s[MAXN << 1];
 string ret;  // 迴文字串儲存結果
-
 void find_palindrome(char *s, int len, int *z) {
     int idx = 0, mx = -1;
     for (int i = 0; i < len; i++) {  // 找迴文半徑最大值
@@ -20,7 +19,6 @@ void find_palindrome(char *s, int len, int *z) {
             ret.push_back(s[i]);
     // cout << ret << '\n';
 }
-
 void z_value_pal(char *s, int len, int *z) {  // 字串，長度，輸出的陣列
     len = (len << 1) + 1;
     for (int i = len - 1; i >= 0; i--)
