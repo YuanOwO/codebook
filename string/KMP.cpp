@@ -20,4 +20,5 @@ vector<int> KMP(string& t, string& p) {
             j = failure[j];
         }
     }
+    return ret;
 }
