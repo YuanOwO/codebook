@@ -1,5 +1,3 @@
-// 用法: 呼叫z_value_pal()並傳入相對應的東西，ret即為最長迴文
-const int MAXN = 1e6 + 5;
 int ans[MAXN << 1];
 char s[MAXN << 1];
 string ret;  // 迴文字串儲存結果
@@ -17,7 +15,7 @@ void find_palindrome(char *s, int len, int *z) {
     for (int i = idx; i <= idx + mx - 1; i++)
         if (s[i] != '@')
             ret.push_back(s[i]);
-    // cout << ret << '\n';
+    // cout << ret << '\n'; //// 直接輸出
 }
 void z_value_pal(char *s, int len, int *z) {  // 字串，長度，輸出的陣列
     len = (len << 1) + 1;

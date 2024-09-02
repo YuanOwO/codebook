@@ -1,5 +1,6 @@
 int z[MAXN];
-void Z_value(const string& s) {  // z[i] = lcp(s[1...],s[i...])
+void Z_value(const string& s) {
+    // z[i] = lcp(s[1...],s[i...])
     int i, j, left, right, len = s.size();
     left = right = 0;
     z[0] = len;

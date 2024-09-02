@@ -1,4 +1,3 @@
-// 用法: 欲處理之字串傳入min_rotation()，得一整數為最小rotation
 int min_rotation(string s) {
     int a = 0, N = s.size();
     s += s;
