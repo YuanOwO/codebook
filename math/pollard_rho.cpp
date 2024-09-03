@@ -1,15 +1,12 @@
 vector<ll> ret;
-
 ll mul(ll x, ll y, ll mod) {
-    ll ret = x * y - (LL)((long double)x / mod * y) * mod;
+    ll ret = x * y - (ll)((long double)x / mod * y) * mod;
     return ret < 0 ? ret + mod : ret;
     // return x * y % mod;  //// for __int128
 }
-
 ll f(ll x, ll c, ll mod) {
     return (mul(x, x, mod) + c) % mod;
 }
-
 ll pollard_rho(ll n) {
     ll c = 1, x = 0, y = 0, p = 2, q, t = 0;
     while (t++ % 128 or gcd(p, n) == 1) {
@@ -22,7 +19,6 @@ ll pollard_rho(ll n) {
     }
     return gcd(p, n);
 }
-
 void fact(ll x) {  // 透過遞迴找質數
     if (miller_rabin(x)) {
         ret.push_back(x);
