@@ -1,7 +1,7 @@
 bool vis[MXN], Map[MXN][MXN];
 int S[MXN];  // 其中 Map 為鄰接表, S 為紀錄這個點與誰匹配
 int n, p;    // n: 左集合數量, p: 右集合數量
-bool slove(int u) {
+bool slove(int u) {  // 找最大匹配
     for (int i = 1; i <= n; i++) {
         if (Map[u][i] && !vis[i]) {         // 有連通且未拜訪
             vis[i] = 1;                     // 紀錄是否走過
