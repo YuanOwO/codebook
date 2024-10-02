@@ -17,12 +17,12 @@
 
 ## factorial and it's modular inverse 與 排列組合 shit
 
-### 用法:
+### 用法
 
 1.  呼叫 `init()` 初始化
 2.  視情況呼叫 `comb()`、`perm()` 或 `h()`
 
-### 結果:
+### 結果
 
 1.  階乘及其模逆元會存在 `fac[]` 跟 `inv[]`
 2.  `comb()`、`perm()` 或 `h()` 會算出結果
@@ -150,7 +150,7 @@ ll power(ll x, ll y);
 
 ### 判斷質數
 
-### 用法:
+### 用法
 
 1. 挑選一處 `magic` 並填入陣列大小 `S`
 2. 呼叫 `miller_rabin(n)`
@@ -163,7 +163,7 @@ ll power(ll x, ll y);
 
 $O(k \log^3 n)$
 
-### 備註:
+### 備註
 
 1.  要確定要判斷的整數 `n` 是介於 $[2, n - 2]$
 2.  測試數列 `magic` 如下:  

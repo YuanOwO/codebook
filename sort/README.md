@@ -28,9 +28,7 @@ void bubble_sort(T arr[], int n);
 -   `arr`: 欲排序的陣列
 -   `n`: 陣列的大小
 
-### 複雜度
-
-#### 時間複雜度
+### 時間複雜度
 
 -   Average: $O(n^2)$
 -   Worst: $O(n^2)$
@@ -57,15 +55,13 @@ void merge_sort(T arr, T tmp, int l, int r);
 -   `l`: 陣列的左邊 (包含)
 -   `r`: 陣列的右邊 (不包含)
 
-### 複雜度
-
-#### 時間複雜度
+### 時間複雜度
 
 -   Average: $O(n \log n)$
 -   Worst: $O(n \log n)$
 -   Best: $O(n \log n)$
 
-#### 空間複雜度
+### 空間複雜度
 
 -   額外空間 $O(n)$
 
@@ -91,9 +87,7 @@ void selection_sort(T arr[], int n);
 -   `arr`: 欲排序的陣列
 -   `n`: 陣列的大小
 
-### 複雜度
-
-#### 時間複雜度
+### 時間複雜度
 
 -   Average: $O(n^2)$
 -   Worst: $O(n^2)$
@@ -119,9 +113,7 @@ void quick_sort(T arr[], int l, int r);
 -   `l`: 陣列的左邊 (包含)
 -   `r`: 陣列的右邊 (不包含)
 
-### 複雜度
-
-#### 時間複雜度
+### 時間複雜度
 
 -   Average: $O(n \log n)$
 -   Worst: $O(n^2)$
@@ -148,9 +140,7 @@ void bogo_sort(T arr[], int n);
 -   `arr`: 欲排序的陣列
 -   `n`: 陣列的大小
 
-### 複雜度
-
-#### 時間複雜度
+### 時間複雜度
 
 -   Average: $O(n \cdot n!)$
 -   Worst: $O(\infty)$
