@@ -551,4 +551,6 @@ TSWLatexianTemp*
 ########################################################################
 
 *.txt
-test.cpp
+!requirements.txt
+test/
+test.*

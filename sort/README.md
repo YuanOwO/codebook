@@ -15,7 +15,7 @@
 
 ## 氣泡排序法
 
-Defined in [bubble_sort.cpp](./bubble_sort.cpp)
+Defined in [bubble_sort.cpp](/sort/bubble_sort.cpp)
 
 ```cpp
 template <typename T>
@@ -34,13 +34,13 @@ void bubble_sort(T arr[], int n);
 -   Worst: $O(n^2)$
 -   Best: $O(n)$
 
-### Note
+### 備註
 
 -   穩定的排序法
 
 ## 合併排序法
 
-Defined in [merge_sort.cpp](./merge_sort.cpp)
+Defined in [merge_sort.cpp](/sort/merge_sort.cpp)
 
 ```cpp
 template <typename T>
@@ -65,7 +65,7 @@ void merge_sort(T arr, T tmp, int l, int r);
 
 -   額外空間 $O(n)$
 
-### Note
+### 備註
 
 -   陣列區間左閉右開 $[l, r)$
 -   穩定的排序法
@@ -74,7 +74,7 @@ void merge_sort(T arr, T tmp, int l, int r);
 
 ## 選擇排序法
 
-Defined in [selection_sort.cpp](./selection_sort.cpp)
+Defined in [selection_sort.cpp](/sort/selection_sort.cpp)
 
 ```cpp
 template <typename T>
@@ -93,13 +93,13 @@ void selection_sort(T arr[], int n);
 -   Worst: $O(n^2)$
 -   Best: $O(n^2)$
 
-### Note
+### 備註
 
 -   不穩定的排序法
 
 ## 快速排序法
 
-Defined in [quick_sort.cpp](./quick_sort.cpp)
+Defined in [quick_sort.cpp](/sort/quick_sort.cpp)
 
 ```cpp
 template <typename T>
@@ -119,7 +119,7 @@ void quick_sort(T arr[], int l, int r);
 -   Worst: $O(n^2)$
 -   Best: $O(n \log n)$
 
-### Note
+### 備註
 
 -   陣列區間左閉右開 $[l, r)$
 -   不穩定的排序法
@@ -128,7 +128,7 @@ void quick_sort(T arr[], int l, int r);
 
 ## Bogo 排序法
 
-Defined in [bogo_sort.cpp](./bogo_sort.cpp)
+Defined in [bogo_sort.cpp](/sort/bogo_sort.cpp)
 
 ```cpp
 void bogo_sort(T arr[], int n);
@@ -146,7 +146,7 @@ void bogo_sort(T arr[], int n);
 -   Worst: $O(\infty)$
 -   Best: $O(n)$
 
-### Note
+### 備註
 
 -   不穩定的排序法
 -   不實用的排序法

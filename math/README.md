@@ -5,11 +5,11 @@
     -   [factorial and it's modular inverse 與 排列組合 shit](#factorial-and-its-modular-inverse-與-排列組合-shit)
     -   [最大公因數](#最大公因數)
     -   [最小公倍數](#最小公倍數)
-    -   [EXGCD 拓展歐基里德法](#exgcd-拓展歐基里德法)
+    -   [拓展歐基里德法 (EXGCD)](#拓展歐基里德法-exgcd)
 -   [算術](#算術)
     -   [快速冪取模](#快速冪取模)
 -   [演算法](#演算法)
-    -   [快速傅立葉變換 FFT](#快速傅立葉變換-fft)
+    -   [快速傅立葉變換 (FFT)](#快速傅立葉變換-fft)
     -   [Miller-Rabin test for prime test](#miller-rabin-test-for-prime-test)
     -   [Pollard's rho Algorithm](#pollards-rho-algorithm)
 
@@ -33,7 +33,7 @@
 
 ## 最大公因數
 
-Defined in [gcd_lcm.cpp](./gcd_lcm.cpp)
+Defined in [gcd_lcm.cpp](/math/gcd_lcm.cpp)
 
 ```cpp
 ll gcd(ll a, ll b);
@@ -55,7 +55,7 @@ ll gcd(ll a, ll b);
 
 ## 最小公倍數
 
-Defined in [gcd_lcm.cpp](./gcd_lcm.cpp)
+Defined in [gcd_lcm.cpp](/math/gcd_lcm.cpp)
 
 ```cpp
 ll lcm(ll a, ll b);
@@ -72,12 +72,12 @@ ll lcm(ll a, ll b);
 
 ### 備註
 
--   $lcm(a, b) = gcd(a, b) \cdot a \cdot b$
+-   $lcm(a, b) = gcd(a, b) \cdot ab$
 -   C++17 後新增 `std::lcm()` 函數
 
-## EXGCD 拓展歐基里德法
+## 拓展歐基里德法 (EXGCD)
 
-Defined in [exgcd.cpp](./exgcd.cpp)
+Defined in [exgcd.cpp](/math/exgcd.cpp)
 
 ```cpp
 int exgcd(int a, int b, ll &x, ll &y);
@@ -96,7 +96,7 @@ int exgcd(int a, int b, ll &x, ll &y);
 
 ### 回傳值
 
-`int`: `a` 和 `b` 的最大公因數
+`int`: $a$ 和 $b$ 的最大公因數
 
 ### 備註
 
@@ -106,7 +106,7 @@ int exgcd(int a, int b, ll &x, ll &y);
 
 ## 快速冪取模
 
-Defined in [fast_pow.cpp](./fast_pow.cpp)
+Defined in [fast_pow.cpp](/math/fast_pow.cpp)
 
 ```cpp
 ll power(ll x, ll y);
@@ -127,7 +127,7 @@ ll power(ll x, ll y);
 
 # 演算法
 
-## 快速傅立葉變換 FFT
+## 快速傅立葉變換 (FFT)
 
 ### 用途
 
