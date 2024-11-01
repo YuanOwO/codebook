@@ -1,21 +1,115 @@
 # 圖論
 
--   [圖論](#圖論)
+-   [圖論結構](#圖論)
+    -   [Tarjan's Algorithm for searching BCC](#tarjans-algorithm-for-searching-bcc)
+    -   [Dominator Tree](#dominator-tree)
+    -   [Finding Maximum Clique](#finding-maximum-clique)
+    -   [Kosaraju's Algorithm for searching SCC](#kosarajus-algorithm-for-searching-scc)
 -   [拓樸](#拓樸)
     -   [拓樸排序](#拓樸排序)
 -   [最短路徑](#最短路徑)
     -   [Dijkstra's Algorithm](#dijkstras-algorithm)
     -   [Bellmen-Ford Algorithm](#bellmen-ford-algorithm)
     -   [Floyd-Warshall Algorithm](#floyd-warshall-algorithm)
--   [網路流](#網路流)
+-   [網路流與匹配](#網路流與匹配)
     -   [Dinic's algorithm](#dinics-algorithm)
--   [其他](#其他)
-    -   [Tarjan's Algorithm for searching BCC](#tarjans-algorithm-for-searching-bcc)
-    -   [Dominator Tree](#dominator-tree)
-    -   [Finding Maximum Clique](#finding-maximum-clique)
-    -   [Kosaraju's Algorithm for searching SCC](#kosarajus-algorithm-for-searching-scc)
     -   [Hungarian Algorithm](#hungarian-algorithm)
     -   [Kuhn–Munkres Algorithm](#kuhnmunkres-algorithm)
+    -   [Maximum Flow with Minimum Cost](#maximum-flow-with-minimum-cost)
+
+# 圖論結構
+
+## Tarjan's Algorithm for searching BCC
+
+雙連通分量 Biconnected Component:  
+不會產生割點使圖被分割成兩個不連通的子圖
+
+### 用法
+
+1. `init(n)` 初始化圖，其中 `n` 為節點點數
+2. `addEdge(u, v)` 加入終點為 `u`, `v` 的無向邊
+3. `solve()` 跑 BCC 回傳二維 `vector`
+
+### 結果
+
+回傳的二維 vector 中
+
+-   一維 vector 是橋 if `size = 2`
+-   一維 vector 是 BCC if `size > 2`
+
+
+## Dominator Tree
+
+支配點: 走到某節點的必經節點
+
+### 用法
+
+1. `init(n, s)` 初始化，其中 `n` 為節點數量 `s` 為起點編號
+2. `addEdge(u, v)` 加入 `u` $\rightarrow$ `v` 的有向邊
+3. `build()` 跑 Dominator Tree
+
+### 結果
+
+-   `idom[i]`: 節點 `i` 的支配點
+
+### 時間複雜度
+
+$O(n + m)$
+
+### 備註
+
+-   有向圖
+-   可以用回朔法找到整顆支配樹
+
+
+## Finding Maximum Clique
+
+-   團 Clique: 任選兩節點都有邊相連的圖
+-   最大團 Maximum Clique: 一張圖的子圖中最大的團
+-   獨立集 Independent Set: 一個圖中一些兩兩不相鄰的頂點所形成的集合
+-   最大獨立集 Maximum Independent Set: 最大團的補集 (補圖)
+
+### 用法
+
+1. `init(n)` 初始化圖，其中 `n` 為節點點數
+2. `addEdge(u, v)` 加入終點為 `u`, `v` 的無向邊
+3. `solve()` 跑 MaxClique
+
+### 結果
+
+-   `solve()` 回傳回傳值為最大團的點數量  
+    大獨立集裡
+
+### 時間複雜度
+
+$O({1.1888}^n)$
+題目的 $n$ 通常最大可以到 $80$ ~ $100$ 左右
+
+### 備註
+
+-   這模板是 0-base
+
+
+## Kosaraju's Algorithm for searching SCC
+
+強連通分量 Strongly Connected Components:  
+圖中任兩點 `u`, `v` 必包含`u` $\rightarrow$ `v` 和 `v` $\rightarrow$ `u` 的路徑
+
+### 用法
+
+1. `init(n)` 初始化圖 其中 `n` 為節點點數
+2. `addEdge(u, v)` 加入 `u` $\rightarrow$ `v` 的有向邊
+3. `solve()` 跑 SCC
+
+### 結果
+
+-   `bln[i]`: 第 `i` 個節點屬於的 `SCC` 編號為 `bln[i]`
+-   `nScc`: 強連通分量 SCC 數量
+
+### 時間複雜度
+
+$O(n + m)$，其中 $n$: 節點數、$m$: 邊數
+
 
 # 拓樸
 
@@ -111,9 +205,9 @@ $O(n^3)$， 其中 $n$ 是節點數
 -   如果有負環 `dis[u][u]` 會小於 $0$
 -   `n = 1000` 仍可以在 $1$ 秒內跑完 (應該啦)
 
-# 網路流
+# 網路流與匹配
 
-## Dinic's algorithm
+## Dinic's Algorithm
 
 Finding maximum flow
 
@@ -134,100 +228,6 @@ Finding maximum flow
 -   注意資料型態 (如果要用 `long long`)
 -   圖必須是 0-base
 -   圖是有向圖
-
-# 其他
-
-
-## Tarjan's Algorithm for searching BCC
-
-雙連通分量 Biconnected Component:  
-不會產生割點使圖被分割成兩個不連通的子圖
-
-### 用法
-
-1. `init(n)` 初始化圖，其中 `n` 為節點點數
-2. `addEdge(u, v)` 加入終點為 `u`, `v` 的無向邊
-3. `solve()` 跑 BCC 回傳二維 `vector`
-
-### 結果
-
-回傳的二維 vector 中
-
--   一維 vector 是橋 if `size = 2`
--   一維 vector 是 BCC if `size > 2`
-
-
-## Dominator Tree
-
-支配點: 走到某節點的必經節點
-
-### 用法
-
-1. `init(n, s)` 初始化，其中 `n` 為節點數量 `s` 為起點編號
-2. `addEdge(u, v)` 加入 `u` $\rightarrow$ `v` 的有向邊
-3. `build()` 跑 Dominator Tree
-
-### 結果
-
--   `idom[i]`: 節點 `i` 的支配點
-
-### 時間複雜度
-
-$O(n + m)$
-
-### 備註
-
--   有向圖
--   可以用回朔法找到整顆支配樹
-
-
-## Finding Maximum Clique
-
--   團 Clique: 任選兩節點都有邊相連的圖
--   最大團 Maximum Clique: 一張圖的子圖中最大的團
--   獨立集 Independent Set: 一個圖中一些兩兩不相鄰的頂點所形成的集合
--   最大獨立集 Maximum Independent Set: 最大團的補集 (補圖)
-
-### 用法
-
-1. `init(n)` 初始化圖，其中 `n` 為節點點數
-2. `addEdge(u, v)` 加入終點為 `u`, `v` 的無向邊
-3. `solve()` 跑 MaxClique
-
-### 結果
-
--   `solve()` 回傳回傳值為最大團的點數量  
-    大獨立集裡
-
-### 時間複雜度
-
-$O({1.1888}^n)$
-題目的 $n$ 通常最大可以到 $80$ ~ $100$ 左右
-
-### 備註
-
--   這模板是 0-base
-
-
-## Kosaraju's Algorithm for searching SCC
-
-強連通分量 Strongly Connected Components:  
-圖中任兩點 `u`, `v` 必包含`u` $\rightarrow$ `v` 和 `v` $\rightarrow$ `u` 的路徑
-
-### 用法
-
-1. `init(n)` 初始化圖 其中 `n` 為節點點數
-2. `addEdge(u, v)` 加入 `u` $\rightarrow$ `v` 的有向邊
-3. `solve()` 跑 SCC
-
-### 結果
-
--   `bln[i]`: 第 `i` 個節點屬於的 `SCC` 編號為 `bln[i]`
--   `nScc`: 強連通分量 SCC 數量
-
-### 時間複雜度
-
-$O(n + m)$，其中 $n$: 節點數、$m$: 邊數
 
 
 ## Hungarian Algorithm
@@ -266,3 +266,31 @@ $O(n^3)$
 ### 備註
 
 -   1-base
+
+## Maximum Flow with Minimum Cost
+
+找最大流最小花費
+
+### 用法
+
+1.  初始化 `init(_n, _s, _t)`  
+    其中 `_n` 是節點數、`_s` 是源點、`_t` 是匯點
+2.  `add_edge(u, v, f, w)` 加入邊  
+    其中 `u` 起點 `v` 終點 `f` 流量 `w` 花費
+3.  `flow()` 回傳答案 
+
+### 結果
+
+算出最大流量與最小流  
+資料型態為 `pair<int, ll>`，其中 `first` 是流量 `second` 是花費
+
+### 時間複雜度
+
+$O(V^2~E^2)$，其中 $E$ 是邊數，$V$ 是節點數
+
+### 備注
+
+-   如果每條邊的花費皆為 $1$，效果相當於單純地跑最大流
+-   注意資料型態 (如果要用 `long long`)
+-   圖必須是 0-base
+-   圖是有向圖
