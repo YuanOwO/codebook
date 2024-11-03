@@ -58,3 +58,15 @@ struct Dinic {
         return res;
     }
 } flow;
+/*
+    查找二分圖配對點:
+    在 add_edge 時寫上 index[u].push_back({v, flow.E[u].size()});
+
+    在 flow 完之後寫上這個
+    for (int i = 1; i <= n; i++) { // 遍歷所有節點
+        for (pair<int, int> j : index[i]) {
+            if (flow.E[i][j.second - 1].f == 0)
+                cout << i << ' ' << j.first << '\n';
+        }
+    }
+ */
