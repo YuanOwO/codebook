@@ -1,0 +1,31 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "compilerPath": "C:\\MinGW\\bin\\g++.exe",
+            "compilerArgs": ["-O1", "-O2", "-Wall", "-Wextra", "-Wshadow"],
+            "intelliSenseMode": "windows-gcc-x64",
+            // "includePath": ["${workspaceFolder}/**"],
+            "defines": [
+                "${myDefines}",
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE",
+                "SHIKA",
+                "ll=long long",
+                "ld=long double",
+                "pii=pair<int,int>",
+                "D=double",
+                "INF=0x7f7f7f7f7f7f7f7fLL",
+                "REP(i, n)=for (int i = 0; i < n; i++)",
+                "PB=push_back",
+                "SZ(x)=(int)(x).size()",
+                "all(x)=(x).begin(), (x).end()"
+            ],
+            "windowsSdkVersion": "10.0.22621.0",
+            "cStandard": "c17",
+            "cppStandard": "gnu++17"
+        }
+    ],
+    "version": 4
+}
