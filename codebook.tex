@@ -1,122 +1,159 @@
 \documentclass[a4paper,10pt,twocolumn,oneside]{article}
-\setlength{\columnsep}{10pt}         % 兩欄模式的間距
-\setlength{\columnseprule}{0pt}      % 兩欄模式間格線粗細
 
-\usepackage{amsthm}                  % 定義，例題
-\usepackage{amssymb}
-% \usepackage[margin=2cm]{geometry}
-\usepackage{fontspec}                % 設定字體
-\usepackage{color}
-\usepackage[x11names]{xcolor}
-\usepackage{listings}                % 顯示 code 用的
-% \usepackage[Glenn]{fncychap}       % 排版，頁面模板
-\usepackage{fancyhdr}                % 設定頁首頁尾
-\usepackage{graphicx}                % Graphic
+\usepackage{amsmath, amssymb, amsthm}    % 美國數學學會
+\usepackage[CheckSingle, CJKmath]{xeCJK} % 中文
+\usepackage{fontspec}                    % 字型配置
+\usepackage{geometry}                    % 版面配置
+\usepackage{fancyhdr}                    % 頁首頁尾
+\usepackage{color}                       % 顏色
+\usepackage[x11names]{xcolor}            % 更多顏色
+\usepackage{listings}                    % 顯示 code 用的
+\usepackage{tikz}                        % 畫圖
 \usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{multicol}
 \usepackage{titlesec}
-\usepackage{amsmath}
-\usepackage{tikz}
 \usepackage{xpatch}
-\usepackage[CheckSingle, CJKmath]{xeCJK}
+% \usepackage{courier}
+% \usepackage[Glenn]{fncychap}           % 排版，頁面模板
 % \usepackage{CJKulem}
 % \usepackage[T1]{fontenc}
-\usepackage{amsmath, courier, listings, fancyhdr, graphicx}
-
-\titlespacing{\section}{0cm}{0cm}{0cm}
-\titlespacing{\subsection}{0cm}{0cm}{0cm}
-\topmargin=0pt
-\headsep=5pt
-\textheight=780pt
-\footskip=0pt
-\voffset=-40pt
-\textwidth=545pt
-\marginparsep=0pt
-\marginparwidth=0pt
-\marginparpush=0pt
-\oddsidemargin=0pt
-\evensidemargin=0pt
-\hoffset=-42pt
-
-% \renewcommand\listfigurename{圖目錄}
-% \renewcommand\listtablename{表目錄} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\setmainfont [  % 主要字型
-  Path = .fonts/ttf/,
-  UprightFont = *-Regular,
-  BoldFont = *-Bold,
-  ItalicFont = *-Italic
-] {Consolas}
+\setmainfont{NotoSans}[  % 主要字體
+    Path           = .fonts/Noto_Sans/,
+    Extension      = .ttf,
+    UprightFont    = *-Regular,
+    BoldFont       = *-Bold,
+    ItalicFont     = *-Italic,
+    BoldItalicFont = *-BoldItalic,
+]
 
-\setmonofont [  % 等寬字形
-  Path = .fonts/ttf/,
-  UprightFont = *-Regular,
-  BoldFont = *-Bold,
-] {FiraCode}
+\setmonofont{Consolas}[  % 等寬字體
+    Path           = .fonts/Consolas/,
+    Extension      = .ttf,
+    UprightFont    = *-Regular,
+    BoldFont       = *-Bold,
+    ItalicFont     = *-Italic,
+    % BoldItalicFont = *-BoldItalic,
+]
 
-\setCJKmainfont [  % 中文字形
-  Path = .fonts/ttf/,
-  UprightFont = *-Regular,
-  BoldFont = *-Bold
-] {TaipeiSansTCBeta}
+\setCJKmainfont{NotoSansTC}[  % 中文主要字體
+    Path           = .fonts/Noto_Sans_TC/,
+    Extension      = .ttf,
+    UprightFont    = *-Regular,
+    BoldFont       = *-Bold,
+]
 
-\XeTeXlinebreaklocale "zh"          % 中文自動換行
-\XeTeXlinebreakskip = 0pt plus 1pt  % 設定段落之間的距離
-\setcounter{secnumdepth}{3}         % 目錄顯示第三層
+% \setCJKmonofont{LXGWWenKaiMonoTC}[  % 中文等寬字體
+% Path           = .fonts/LXGW_WenKai_Mono_TC/,
+% Extension      = .ttf,
+% UprightFont    = *-Regular,
+% BoldFont       = *-Bold,
+% ]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 彩色模式
+\newcommand{\keywordcolor}{\color{Blue1}}
+\newcommand{\identifiercolor}{\color{black}}
+\newcommand{\commentcolor}{\color{Red4}}
+\newcommand{\stringcolor}{\color{Green4}}
+
+% 黑白模式
+% \renewcommand{\keywordcolor}{\color{black}}
+% \renewcommand{\identifiercolor}{\color{black}}
+% \renewcommand{\commentcolor}{\color{black!70}}
+% \renewcommand{\stringcolor}{\color{black!70}}
+
 \makeatletter
 \lst@CCPutMacro\lst@ProcessOther {"2D}{\lst@ttfamily{-{}}{-{}}}
 \@empty\z@\@empty
 \makeatother
-\lstset{                              % Code 顯示
-  language=C++,                       % the language of the code
-  basicstyle=\footnotesize\ttfamily,  % the size of the fonts that are used for the code
-  % numbers=left,                     % where to put the line-numbers
-  numberstyle=\footnotesize,          % the size of the fonts that are used for the line-numbers
-  stepnumber=1,                       % the step between two line-numbers. If it's 1, each line  will be numbered
-  numbersep=5pt,                      % how far the line-numbers are from the code
-  backgroundcolor=\color{white},      % choose the background color. You must add \usepackage{color}
-  showspaces=false,                   % show spaces adding particular underscores
-  showstringspaces=false,             % underline spaces within strings
-  showtabs=false,                     % show tabs within strings adding particular underscores
-  frame=false,                        % adds a frame around the code
-  tabsize=2,                          % sets default tabsize to 2 spaces
-  captionpos=b,                       % sets the caption-position to bottom
-  breaklines=true,                    % sets automatic line breaking
-  breakatwhitespace=false,            % sets if automatic breaks should only happen at whitespace
-  escapeinside={\%*}{*)},             % if you want to add a comment within your code
-  morekeywords={*},                   % if you want to add more keywords to the set
-  keywordstyle=\bfseries\color{Blue1},
-  commentstyle=\itshape\color{Red4},
-  stringstyle=\itshape\color{Green4},
+
+\lstset{
+    language=C++,                           % Code 的語言
+    numbers=none,                           % 行號的位置
+    numberstyle=\footnotesize,              % 行號的字型和大小
+    stepnumber=1,                           % 顯示行號的間隔
+    numbersep=5pt,                          % 行號跟 code 的距離
+    showspaces=false,                       % 顯示空白 (使用特別的底線記號)
+    showtabs=false,                         % 顯示 Tab
+    showstringspaces=false,                 % 顯示字串的空白
+    tabsize=2,                              % Tab 的寬度
+    frame=leftline,                         % adds a frame around the code
+    captionpos=b,                           % sets the caption-position to bottom
+    breaklines=true,                        % sets automatic line breaking
+    breakatwhitespace=false,                % sets if automatic breaks should only happen at whitespace
+    escapeinside={\%*}{*)},                 % if you want to add a comment within your code
+    morekeywords={*},                       % 自訂的 Keywords
+    basicstyle=\footnotesize\ttfamily,      % 基本的字型和大小
+    backgroundcolor=\color{white},          % 背景顏色
+    keywordstyle=\bfseries\keywordcolor,    % Keywords 的字型
+    identifierstyle=\identifiercolor,       % 標示符的字型
+    commentstyle=\itshape\commentcolor,     % 註解的字型
+    stringstyle=\itshape\stringcolor,       % 字串的字型
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\geometry{a4paper}                           % 頁面 A4 大小
+\geometry{includehead, nofoot, nomarginpar}  % 內文區塊包含頁首，沒有頁尾、旁注
+\geometry{headsep=2mm}                       % 頁首和內文的距離
+\geometry{vmargin=5mm, hmargin=5mm}          % 垂直、水平邊界
+
+\setlength{\columnsep}{3mm}                  % 兩欄模式的間距
+\setlength{\columnseprule}{0pt}              % 兩欄模式間格線粗細
+
+\titlespacing{\section}{0cm}{0cm}{0cm}
+\titlespacing{\subsection}{0cm}{0cm}{0cm}
+
+\setcounter{secnumdepth}{3}                  % 目錄顯示第三層
+
+\XeTeXlinebreaklocale "zh"                   % 中文自動換行
+\XeTeXlinebreakskip = 0pt plus 1pt           % 設定段落之間的距離
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 \pagestyle{fancy}
-\fancyfoot{}
-\fancyhead[L]{NTOU: Haruhikagerogerokonokositantan (ﾊﾙﾋｶｹﾞﾛｹﾞﾛｺﾉｺｼﾀﾝﾀﾝ)}
-\fancyhead[R]{\thepage}
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\contentsname}{Contents}
-\scriptsize
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\tableofcontents
 
 %%%%%
 
+% 頁首、頁尾
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{NTOU: Haruhikagerogerokonokositantan (ﾊﾙﾋｶｹﾞﾛｹﾞﾛｺﾉｺｼﾀﾝﾀﾝ)}
+\fancyhead[R]{\thepage}
+\fancyfoot{}
+
+%%%%%
+
+% 目錄
+\renewcommand{\contentsname}{Contents}
+\scriptsize
+\begin{multicols}{2}
+    \tableofcontents
+\end{multicols}
+
+%%%%%
+
+% 欄寬測試
+% \lstinputlisting{misc/width_test.txt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Basis}
+
 
 \subsection{Default Code}
 \lstinputlisting{basis/default_code.cpp}
 
 \subsection{Some Useful Primes}
 \lstinputlisting{basis/primes.cpp}
+
+\subsection{隨機 \& MT19937}
+\lstinputlisting{basis/mt.cpp}
 
 %%%%%
 
@@ -262,15 +299,35 @@
 \section{Miscellaneous}
 
 \subsection{Discretization}
-\lstinputlisting{other/discretization.cpp}
+\lstinputlisting{misc/discretization.cpp}
 
 \subsection{Blessing}
-\lstinputlisting{other/blessing.cpp}
+\lstinputlisting{misc/blessing1.cpp}
+\lstinputlisting{misc/blessing2.cpp}
+\lstinputlisting{misc/blessing3.cpp}
+
+%%%%%
+
+\clearpage
 
 \subsection{Graph Paper}
-\begin{tikzpicture}[every node/.style={minimum size=1cm-\pgflinewidth, outer sep=10pt}, scale=2]
-  \draw[step=0.2cm,color=gray] (0,0) grid (9,13);
-  \draw[step=1cm,color=black,line width=0.4mm] (0,0) grid (9,13);
-\end{tikzpicture}
+
+% 產生方格紙 \graph{X 長度}{Y 長度}
+\newcommand{\graph}[2]{
+    \noindent
+    \begin{tikzpicture}[every node/.style={minimum size=1cm-\pgflinewidth, outer sep=10pt}, scale=2]
+        \draw[step=0.2cm, color=gray] (0, 0) grid (#1, #2);
+        \draw[step=1cm, color=black, line width=0.4mm] (0, 0) grid (#1, #2);
+    \end{tikzpicture}
+}
+
+\graph{10}{13.6}
+\clearpage
+\graph{10}{14}
+\clearpage
+\graph{10}{14}
+\clearpage
+% \graph{10}{14}
+% \clearpage
 
 \end{document}

@@ -1,16 +1,16 @@
 BasedOnStyle: Google
 
-ColumnLimit: 120
-IndentWidth: 4
+ColumnLimit: 60
+IndentWidth: 2
 PPIndentWidth: 2
 IndentCaseLabels: false
 IndentPPDirectives: AfterHash
 UseTab: Never
-TabWidth: 4
+TabWidth: 2
 
 AlignArrayOfStructures: Left
 AllowShortBlocksOnASingleLine: Empty
-AllowShortFunctionsOnASingleLine: Empty
+AllowShortFunctionsOnASingleLine: All
 AllowShortIfStatementsOnASingleLine: Never
 AllowShortLoopsOnASingleLine: false
 InsertNewlineAtEOF: true
