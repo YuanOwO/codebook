@@ -4,7 +4,7 @@
 \usepackage[CheckSingle, CJKmath]{xeCJK} % 中文
 \usepackage{fontspec}                    % 字型配置
 \usepackage{geometry}                    % 版面配置
-\usepackage{fancyhdr}                    % 頁首頁尾
+\usepackage[nocheck]{fancyhdr}           % 頁首頁尾
 \usepackage{color}                       % 顏色
 \usepackage[x11names]{xcolor}            % 更多顏色
 \usepackage{listings}                    % 顯示 code 用的
@@ -46,6 +46,13 @@
     BoldFont       = *-Bold,
 ]
 
+\setCJKmonofont{NotoSansTC}[  % 中文等寬字體
+    Path           = .fonts/Noto_Sans_TC/,
+    Extension      = .ttf,
+    UprightFont    = *-Regular,
+    BoldFont       = *-Bold,
+]
+
 % \setCJKmonofont{LXGWWenKaiMonoTC}[  % 中文等寬字體
 % Path           = .fonts/LXGW_WenKai_Mono_TC/,
 % Extension      = .ttf,
@@ -73,7 +80,7 @@
 \makeatother
 
 \lstset{
-    language=C++,                           % Code 的語言
+    % language=C++,                         % Code 的語言
     numbers=none,                           % 行號的位置
     numberstyle=\footnotesize,              % 行號的字型和大小
     stepnumber=1,                           % 顯示行號的間隔
@@ -95,6 +102,11 @@
     commentstyle=\itshape\commentcolor,     % 註解的字型
     stringstyle=\itshape\stringcolor,       % 字串的字型
 }
+
+\newcommand{\inputcpp}[1]{\lstinputlisting[language=C++]{#1}}  % 引入 C++
+\newcommand{\inputpy}[1]{\lstinputlisting[language=Python]{#1}}     % 引入蟒蛇
+\newcommand{\inputjava}[1]{\lstinputlisting[language=Java]{#1}}     % 引入爪哇
+\newcommand{\inputtxt}[1]{\lstinputlisting{#1}}                     % 引入文字檔
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -139,7 +151,7 @@
 %%%%%
 
 % 欄寬測試
-% \lstinputlisting{misc/width_test.txt}
+% \inputtxt{misc/width_test.txt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -147,172 +159,229 @@
 
 
 \subsection{Default Code}
-\lstinputlisting{basis/default_code.cpp}
+\inputcpp{basis/default_code.cpp}
 
 \subsection{Some Useful Primes}
-\lstinputlisting{basis/primes.cpp}
+\inputcpp{basis/primes.cpp}
 
 \subsection{隨機 \& MT19937}
-\lstinputlisting{basis/mt.cpp}
+\inputcpp{basis/mt.cpp}
 
 %%%%%
 
 \section{Data Structures}
 
 \subsection{Disjoint Set (Union-Find)}
-\lstinputlisting{data_structure/dsu.cpp}
+\inputcpp{data_structure/dsu.cpp}
 
 \subsection{Binary Indexed Tree}
-\lstinputlisting{data_structure/binary_indexed_tree.cpp}
+\inputcpp{data_structure/binary_indexed_tree.cpp}
 
 \subsection{Segment Tree}
-\lstinputlisting{data_structure/segment_tree.cpp}
+\inputcpp{data_structure/segment_tree.cpp}
 
 %%%%%
 
 \section{Mathematics}
 
-\subsection{Combination with Inverse}
-\lstinputlisting{math/combinations_with_inverse.cpp}
+\renewcommand{\mod}{\text{ mod }}
+\subsection{公式們}
+\begin{gather*}
+    \begin{aligned}
+        \sum_{k=1}^{n} n = \frac{n (n+1)}{2}, \quad          &
+        \sum_{k=1}^{n} n^2 = \frac{n (n+1) (2n+1)}{6}, \quad &
+        \sum_{k=1}^{n} n^3 = \bigg[ \frac{n (n+1)}{2} \bigg]^2
+    \end{aligned}  \\
+    \begin{aligned}
+        \sum_{k=1}^{n} n^4 & = n (1+n) (1+2n) (-1 + 3n + 3n^2) \,/\, 30 \\
+        \sum_{k=1}^{n} n^5 & = n^2 (n+1)^2 (2n^2+2n-1) \,/\, 12
+    \end{aligned}  \\
+    \begin{aligned}
+        \textrm{錯位排列} \qquad &
+        DP_i = \begin{cases}
+                   0 \lor 1,                          & i = 1 \lor 2    \\
+                   (i - 1)(DP_{i-1} \times DP_{i-2}), & i \geq 3        \\
+                   = i DP_{i-1} + (-1)^i              & \textrm{另一種關係式}
+               \end{cases}
+    \end{aligned}  \\
+    \begin{aligned}
+        P_{k}^{n} & = \frac{n!}{k!(n-k)!}, &
+        C_{k}^{n} & = \frac{n!}{(n-k)!},   &
+        H_{k}^{n} & = C_{n - 1}^{n + k -1}   \\
+        \pi       & = \arccos(-1),         &
+        0         & = e^{i\pi} + 1,        &
+        pV        & = nTR
+    \end{aligned}  \\
+    \begin{aligned}[c]
+        a^{\varphi(m)} & \equiv 1 (\mod m)                        \\
+        a^b            & \equiv a^{b \mod \varphi(m)-1} (\mod m)  \\
+        \varphi(m)     & = m - 1, \text{When } m \text{ is Prime}
+    \end{aligned}
+\end{gather*}
 
-\subsection{EXGCD}
-\lstinputlisting{math/exgcd.cpp}
-
-\subsection{FFT}
-\lstinputlisting{math/fast_fourier_transform.cpp}
-
-\subsection{Exponentiation by Squaring}
-\lstinputlisting{math/fast_pow.cpp}
+\subsection{階乘 \& 模逆元}
+\inputcpp{math/factorial_with_inverse.cpp}
 
 \subsection{GCD and LCM}
-\lstinputlisting{math/gcd_lcm.cpp}
+\inputcpp{math/gcd_lcm.cpp}
+
+\subsection{EXGCD}
+$ax + by = gcd(a, b)$
+\inputcpp{math/exgcd.cpp}
+
+\subsection{Fast Power}
+\inputcpp{math/fast_pow.cpp}
+
+\subsection{FFT}
+使用前要先跑過 \texttt{pre\_fft()}；\texttt{n} 必須是 $2^k$。
+\inputcpp{math/fast_fourier_transform.cpp}
+
+\subsection{質數表}
+\inputcpp{math/primes_table.cpp}
+
+\subsection{歐拉函數}
+$\varphi(x) = $ 所有小於等於 $x$ 且和 $x$ 互質的數的數量
+\inputcpp{math/phi.cpp}
 
 \subsection{Miller-Rabin Algorithm}
-\lstinputlisting{math/miller_rabin.cpp}
+\begin{equation*}
+    Magic = \begin{cases}
+        \{2, 7, 61\},           & n < 4,759,123,141     \\
+        \{2, 13, 23, 1662803\}, & n < 1,122,004,669,633 \\
+        \{2, 3, 5, 7, 11, 13\}, & n < 3,474,749,660,383 \\
+        \{2, 325, 9375, 28178,  & n < 2^{64}            \\
+        450775, 9780504, 1795265022\}
+    \end{cases}
+\end{equation*}
+\inputcpp{math/miller_rabin.cpp}
 
 \subsection{Pollard's Rho Algorithm}
-\lstinputlisting{math/pollard_rho.cpp}
+\inputcpp{math/pollard_rho.cpp}
+
+% \subsection{Decreate Sqrt}
+% \inputcpp{math/decreate_sqrt.cpp}
+
+\subsection{約瑟夫問題}
+\inputcpp{math/josephus.cpp}
 
 %%%%%
 
 \section{Graph}
 
 \subsection{Topological Sort}
-\lstinputlisting{graph_theory/topological_sort.cpp}
+\inputcpp{graph_theory/topological_sort.cpp}
 
 \subsection{Tarjan's Algorithm for BCC}
-\lstinputlisting{graph_theory/bcc_tarjan.cpp}
+\inputcpp{graph_theory/bcc_tarjan.cpp}
 
 \subsection{Bellmen-Ford Algorithm}
-\lstinputlisting{graph_theory/bellmen_ford.cpp}
+\inputcpp{graph_theory/bellmen_ford.cpp}
 
 \subsection{Dijkstra's Algorithm}
-\lstinputlisting{graph_theory/dijkstra.cpp}
+\inputcpp{graph_theory/dijkstra.cpp}
 
 \subsection{Dinic's Algorithm for Maximum Flow}
-\lstinputlisting{graph_theory/dinic.cpp}
+\inputcpp{graph_theory/dinic.cpp}
 
 \subsection{Dominator Tree}
-\lstinputlisting{graph_theory/dominator_tree.cpp}
+\inputcpp{graph_theory/dominator_tree.cpp}
 
 \subsection{Floyd-Warshall Algorithm}
-\lstinputlisting{graph_theory/floyd_warshall.cpp}
+\inputcpp{graph_theory/floyd_warshall.cpp}
 
 \subsection{Maximum Clique}
-\lstinputlisting{graph_theory/maximum_clique.cpp}
+\inputcpp{graph_theory/maximum_clique.cpp}
 
 \subsection{Kosaraju's Algorithm for SCC}
-\lstinputlisting{graph_theory/scc_kosaraju.cpp}
+\inputcpp{graph_theory/scc_kosaraju.cpp}
 
 %%%%%
 
 \section{Tree Algorithms}
 
 \subsection{Lowest Common Ancester}
-\lstinputlisting{tree_algorithm/lowest_common_ancester.cpp}
+\inputcpp{tree_algorithm/lowest_common_ancester.cpp}
 
 \subsection{Eular Tour for LCA}
-\lstinputlisting{tree_algorithm/eular_tour_for_lca.cpp}
+\inputcpp{tree_algorithm/eular_tour_for_lca.cpp}
 
 \subsection{DSU on Tree}
-\lstinputlisting{tree_algorithm/dsu_on_tree.cpp}
+\inputcpp{tree_algorithm/dsu_on_tree.cpp}
 
 %%%%%
 
 \section{String Algorithms}
 
 \subsection{Suffix Array (SAIS)}
-\lstinputlisting{string/SAIS.cpp}
+\inputcpp{string/SAIS.cpp}
 
 \subsection{Z-algorithm}
-\lstinputlisting{string/z_algorithm.cpp}
+\inputcpp{string/z_algorithm.cpp}
 
 \subsection{Knuth-Morris-Pratt Algorithm}
-\lstinputlisting{string/KMP.cpp}
+\inputcpp{string/KMP.cpp}
 
 \subsection{Manacher's Algorithm}
-\lstinputlisting{string/manacher.cpp}
+\inputcpp{string/manacher.cpp}
 
 \subsection{Minimum Rotation}
-\lstinputlisting{string/min_rotation.cpp}
+\inputcpp{string/min_rotation.cpp}
 
 \subsection{Rolling Hash}
-\lstinputlisting{string/rolling_hash.cpp}
+\inputcpp{string/rolling_hash.cpp}
 
 %%%%%
 
 \section{Geometry}
 
 \subsection{Basic Geometry Structure}
-\lstinputlisting{geometry/geometry_struct.cpp}
+\inputcpp{geometry/geometry_struct.cpp}
 
 \subsection{Circle Cover Area}
-\lstinputlisting{geometry/circle_cover.cpp}
+\inputcpp{geometry/circle_cover.cpp}
 
 \subsection{Circles' Tangent Lines}
-\lstinputlisting{geometry/circle_tangent_line.cpp}
+\inputcpp{geometry/circle_tangent_line.cpp}
 
 \subsection{Circles' Intersections}
-\lstinputlisting{geometry/circle_intersection.cpp}
+\inputcpp{geometry/circle_intersection.cpp}
 
 \subsection{Convex Hull}
-\lstinputlisting{geometry/convex_hull.cpp}
+\inputcpp{geometry/convex_hull.cpp}
 
 \subsection{Convex Hull Tricks}
-\lstinputlisting{geometry/convex_hull_tricks.cpp}
+\inputcpp{geometry/convex_hull_tricks.cpp}
 
 \subsection{Pick's Theory}
-\lstinputlisting{geometry/picks_theory.cpp}
+\inputcpp{geometry/picks_theory.cpp}
 
 %%%%%
 
 \section{Sorting}
 
 \subsection{Merge Sort}
-\lstinputlisting{sort/merge_sort.cpp}
+\inputcpp{sort/merge_sort.cpp}
 
 \subsection{Quick Sort}
-\lstinputlisting{sort/quick_sort.cpp}
+\inputcpp{sort/quick_sort.cpp}
 
 %%%%%
 
 \section{Miscellaneous}
 
 \subsection{Discretization}
-\lstinputlisting{misc/discretization.cpp}
+\inputcpp{misc/discretization.cpp}
 
 \subsection{Blessing}
-\lstinputlisting{misc/blessing1.cpp}
-\lstinputlisting{misc/blessing2.cpp}
-\lstinputlisting{misc/blessing3.cpp}
+\inputcpp{misc/blessing1.cpp}
+\inputcpp{misc/blessing2.cpp}
+\inputcpp{misc/blessing3.cpp}
 
 %%%%%
 
 \clearpage
 
-\subsection{Graph Paper}
-
-% 產生方格紙 \graph{X 長度}{Y 長度}
+% 產生方格紙 \graph{寬度 (X)}{高度 (Y)}
 \newcommand{\graph}[2]{
     \noindent
     \begin{tikzpicture}[every node/.style={minimum size=1cm-\pgflinewidth, outer sep=10pt}, scale=2]
@@ -321,7 +390,9 @@
     \end{tikzpicture}
 }
 
-\graph{10}{13.6}
+\subsection{Graph Paper}
+
+\graph{10}{13.6} % 頁面含標題所以比較短
 \clearpage
 \graph{10}{14}
 \clearpage
