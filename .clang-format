@@ -12,6 +12,6 @@ AlignArrayOfStructures: Left
 AllowShortBlocksOnASingleLine: Empty
 AllowShortFunctionsOnASingleLine: All
 AllowShortIfStatementsOnASingleLine: AllIfsAndElse
-AllowShortLoopsOnASingleLine: false
+AllowShortLoopsOnASingleLine: true
 InsertNewlineAtEOF: true
 RemoveSemicolon: true

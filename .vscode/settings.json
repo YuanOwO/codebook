@@ -8,11 +8,26 @@
         "chrono": "cpp",
         "bitset": "cpp",
         "algorithm": "cpp",
+<<<<<<< Updated upstream
         "*.tcc": "cpp",
         "string": "cpp",
         "unordered_map": "cpp",
         "unordered_set": "cpp",
         "rope": "cpp"
+=======
+        "deque": "cpp",
+        "string": "cpp",
+        "vector": "cpp",
+        "rope": "cpp",
+        "*.tcc": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp",
+        "slist": "cpp",
+        "valarray": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp",
+        "system_error": "cpp"
+>>>>>>> Stashed changes
     },
     "latex-workshop.latex.recipe.default": "xelatex",
     "latex-workshop.latex.recipes": [

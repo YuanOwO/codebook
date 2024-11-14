@@ -1,5 +1,10 @@
+// 編譯參數：-std=c++17 -Wall -Wshadow
+//         -fsanitize=undefined
+#pragma GCC optimize("O3,unroll-loops")
+#pragma target optimize("avx2,bmi,bmi2,lzcnt,popcnt")
 #include <bits/stdc++.h>
 #define ll long long
+#define lll __int128
 #define ld long double
 #define pii pair<int, int>
 #define D double
