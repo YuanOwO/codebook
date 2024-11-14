@@ -10,28 +10,18 @@ struct Query {
   }
 };
 
-vector<Query> q;  // 詢問
-
-void add(int idx) {
-  // ... 自己推喔
-}
-
-void sub(int idx) {
-  // ... 自己推喔
-}
+vector<Query> q;      // 詢問
+void add(int idx) {}  // ... 自己推喔
+void sub(int idx) {}  // ... 自己推喔
 
 void mos_algorithm() {
   k = sqrt(n);  // n 個東西分成 k 塊
   sort(q.begin(), q.end());
   for (int i = 0, l = 1, r = 0; i < m; i++) {
-    while (l > q[i].l)
-      add(--l);
-    while (r < q[i].r)
-      add(++r);
-    while (l < q[i].l)
-      sub(l++);
-    while (r > q[i].r)
-      sub(r--);
+    while (l > q[i].l) add(--l);
+    while (r < q[i].r) add(++r);
+    while (l < q[i].l) sub(l++);
+    while (r > q[i].r) sub(r--);
     ans[q[i].id] = cur;  // 每一題長不一樣
   }
 }

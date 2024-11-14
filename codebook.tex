@@ -69,10 +69,10 @@
 \newcommand{\stringcolor}{\color{Green4}}
 
 % 黑白模式
-% \renewcommand{\keywordcolor}{\color{black}}
-% \renewcommand{\identifiercolor}{\color{black}}
-% \renewcommand{\commentcolor}{\color{black!70}}
-% \renewcommand{\stringcolor}{\color{black!70}}
+\renewcommand{\keywordcolor}{\color{black}}
+\renewcommand{\identifiercolor}{\color{black}}
+\renewcommand{\commentcolor}{\color{black!70}}
+\renewcommand{\stringcolor}{\color{black!70}}
 
 \makeatletter
 \lst@CCPutMacro\lst@ProcessOther {"2D}{\lst@ttfamily{-{}}{-{}}}
@@ -167,18 +167,31 @@
 \subsection{隨機 \& MT19937}
 \inputcpp{basis/mt.cpp}
 
+\subsection{快讀快寫}
+\inputcpp{basis/fast_io.cpp}
+
 %%%%%
 
 \section{Data Structures}
 
-\subsection{Disjoint Set (Union-Find)}
+\subsection{Disjoint Set (併查集)}
 \inputcpp{data_structure/dsu.cpp}
 
 \subsection{Binary Indexed Tree}
-\inputcpp{data_structure/binary_indexed_tree.cpp}
+\inputcpp{data_structure/bit.cpp}
+
+\subsection{二維 BIT}
+\inputcpp{data_structure/bit_2D.cpp}
 
 \subsection{Segment Tree}
 \inputcpp{data_structure/segment_tree.cpp}
+
+\subsection{Treap}
+\inputcpp{data_structure/treap.cpp}
+
+\subsection{平板電腦}
+\inputcpp{data_structure/pbds.cpp}
+
 
 %%%%%
 
@@ -205,12 +218,12 @@
                \end{cases}
     \end{aligned}  \\
     \begin{aligned}
-        P_{k}^{n} & = \frac{n!}{k!(n-k)!}, &
-        C_{k}^{n} & = \frac{n!}{(n-k)!},   &
-        H_{k}^{n} & = C_{n - 1}^{n + k -1}   \\
-        \pi       & = \arccos(-1),         &
-        0         & = e^{i\pi} + 1,        &
-        pV        & = nTR
+        P_{k}^{n}   & = \frac{n!}{k!(n-k)!},         &
+        C_{k}^{n}   & = \frac{n!}{(n-k)!},           &
+        H_{k}^{n}   & = C_{n - 1}^{n + k -1}           \\
+        \pi         & = \arccos(-1),                 &
+        e^{i\theta} & = \cos \theta + i \sin \theta, &
+        pV          & = nTR
     \end{aligned}  \\
     \begin{aligned}[c]
         a^{\varphi(m)} & \equiv 1 (\mod m)                        \\
@@ -231,6 +244,9 @@ $ax + by = gcd(a, b)$
 
 \subsection{Fast Power}
 \inputcpp{math/fast_pow.cpp}
+
+\subsection{矩陣乘法}
+\inputcpp{math/mat_mul.cpp}
 
 \subsection{FFT}
 使用前要先跑過 \texttt{pre\_fft()}；\texttt{n} 必須是 $2^k$。
@@ -311,14 +327,23 @@ $\varphi(x) = $ 所有小於等於 $x$ 且和 $x$ 互質的數的數量
 
 \section{Tree Algorithms}
 
-\subsection{Lowest Common Ancester}
-\inputcpp{tree_algorithm/lowest_common_ancester.cpp}
+\subsection{時間戳記 \& 倍增表 (初始化)}
+\inputcpp{tree_algorithm/init.cpp}
+
+\subsection{LCA}
+\inputcpp{tree_algorithm/lca.cpp}
 
 \subsection{Eular Tour for LCA}
 \inputcpp{tree_algorithm/eular_tour_for_lca.cpp}
 
+\subsection{樹上差分}
+\inputcpp{tree_algorithm/difference.cpp}
+
 \subsection{DSU on Tree}
 \inputcpp{tree_algorithm/dsu_on_tree.cpp}
+
+\subsection{樹鏈剖分}
+\inputcpp{tree_algorithm/decomposition.cpp}
 
 %%%%%
 
@@ -352,10 +377,10 @@ $\varphi(x) = $ 所有小於等於 $x$ 且和 $x$ 互質的數的數量
 \subsection{Circle Cover Area}
 \inputcpp{geometry/circle_cover.cpp}
 
-\subsection{Circles' Tangent Lines}
+\subsection{圓的公切線}
 \inputcpp{geometry/circle_tangent_line.cpp}
 
-\subsection{Circles' Intersections}
+\subsection{圓的交點}
 \inputcpp{geometry/circle_intersection.cpp}
 
 \subsection{Convex Hull}
@@ -365,7 +390,27 @@ $\varphi(x) = $ 所有小於等於 $x$ 且和 $x$ 互質的數的數量
 \inputcpp{geometry/convex_hull_tricks.cpp}
 
 \subsection{Pick's Theory}
+\begin{align*}
+    A = i + \frac{b}{2} - 1, \quad &
+    2A = 2i + b - 2, \quad         &
+    i = A - \frac{b}{2} + 1
+\end{align*}
+其中 $A$ 為面積、$b$ 為圖形內部的點數量、$i$ 為圖形線上的點數量
 \inputcpp{geometry/picks_theory.cpp}
+
+%%%%%
+
+\section{DP}
+
+\subsection{區間 DP}
+時間複雜度 $O(n^3)$，常見的 $n$ 在 1000 以內
+\inputcpp{DP/range.cpp}
+
+\subsection{位數 DP}
+\inputcpp{DP/digit.cpp}
+
+\subsection{SOS DP}
+\inputcpp{DP/sos.cpp}
 
 %%%%%
 
@@ -381,20 +426,28 @@ $\varphi(x) = $ 所有小於等於 $x$ 且和 $x$ 互質的數的數量
 
 \section{Miscellaneous}
 
+\subsection{Builtins}
+\inputcpp{misc/__builtins.cpp}
+
 \subsection{Discretization}
 \inputcpp{misc/discretization.cpp}
 
 \subsection{Mo's Algorithm}
 \inputcpp{misc/mos_algorithm.cpp}
 
+\subsection{Decimal}
+\inputpy{misc/decimal.py}
+
+\subsection{Fraction}
+\inputpy{misc/fraction.py}
+
 \subsection{Blessing}
 \inputcpp{misc/blessing1.cpp}
 \inputcpp{misc/blessing2.cpp}
 \inputcpp{misc/blessing3.cpp}
+\inputtxt{misc/acac.txt}
 
 %%%%%
-
-\clearpage
 
 % 產生方格紙 \graph{寬度 (X)}{高度 (Y)}
 \newcommand{\graph}[2]{
@@ -405,9 +458,12 @@ $\varphi(x) = $ 所有小於等於 $x$ 且和 $x$ 互質的數的數量
     \end{tikzpicture}
 }
 
+% \clearpage
+\newpage
+
 \subsection{Graph Paper}
 
-\graph{10}{13.6} % 頁面含標題所以比較短
+\graph{5}{13.6} % 只有半頁
 \clearpage
 \graph{10}{14}
 \clearpage
