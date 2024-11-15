@@ -413,9 +413,9 @@ $\varphi(x) = $ 所有小於等於 $x$ 且和 $x$ 互質的數的數量
 \noindent
 \texttt{dp[位數][狀態]，dp[pos][state]}: \\
 定義為目前位數在前導狀態為 \texttt{state} 的時候的計數 \\
-例如：求數字沒有出現 \texttt{66} 的數量 \texttt{l ~ r} \\
-$\rightarrow dp[pos][1]$ 可表示計算 \texttt{pos} 個位數在前導出現一個 \texttt{6} 的計數 \\
-$\rightarrow dp[3][1]$ 則計算 \texttt{6XXX} \\
+例如：求數字沒有出現 \texttt{66} 的數量 \texttt{l \~{} r} \\
+$\rightarrow$ \texttt{dp[pos][1]} 可表示計算 \texttt{pos} 個位數在前導出現一個 \texttt{6} 的計數 \\
+$\rightarrow$ \texttt{dp[3][1]} 則計算 \texttt{6XXX} \\
 模板的 \texttt{pos} 是反過來的，但不影響 (只是用來 \texttt{dp} 記憶用) \\
 \begin{tabular}{l l}
     \texttt{pos}:   & 目前位數                                         \\
