@@ -1,4 +1,5 @@
 #define SZ(x) ((int)x.size())
+#define PB push_back
 struct Dinic {
   struct Edge {
     int v, f, re;
