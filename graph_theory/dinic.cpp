@@ -1,3 +1,4 @@
+#define SZ(x) ((int)x.size())
 struct Dinic {
   struct Edge {
     int v, f, re;
@@ -8,16 +9,14 @@ struct Dinic {
     n = _n;
     s = _s;
     t = _t;
-    for (int i = 0; i < n; i++)
-      E[i].clear();
+    for (int i = 0; i < n; i++) E[i].clear();
   }
   void add_edge(int u, int v, int f) {
     E[u].PB({v, f, SZ(E[v])});
     E[v].PB({u, 0, SZ(E[u]) - 1});
   }
   bool BFS() {
-    for (int i = 0; i < n; i++)
-      level[i] = -1;
+    for (int i = 0; i < n; i++) level[i] = -1;
     queue<int> que;
     que.push(s);
     level[s] = 0;
@@ -50,8 +49,7 @@ struct Dinic {
     return res;
   }
   int flow(int res = 0) {
-    while (BFS())
-      res += DFS(s, 2147483647);
+    while (BFS()) res += DFS(s, 2147483647);
     return res;
   }
 } flow;
