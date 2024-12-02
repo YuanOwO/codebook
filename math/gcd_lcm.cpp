@@ -4,4 +4,4 @@ ll gcd(ll a, ll b) {
   return a + b;
 }
 
-ll lcm(ll a, ll b) { return a * b * gcd(a, b); }
+ll lcm(ll a, ll b) { return a * b / gcd(a, b); }
