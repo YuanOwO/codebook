@@ -5,8 +5,11 @@ struct Scc {  // 新的 DAG 可能會有多重邊
   set<int> vis[MXN];
   void init(int _n) {
     n = _n;
-    for (int i = 0; i <= n; i++)
+    for (int i = 0; i <= n; i++) {
       E[i].clear(), rE[i].clear();
+      dag[i].clear(), vis[i].clear();
+      bln[i] = -1;
+    }
   }
   void addEdge(int u, int v) {
     E[u].PB(v);
