@@ -13,8 +13,8 @@
     -   [Floyd-Warshall Algorithm](#floyd-warshall-algorithm)
 -   [網路流與匹配](#網路流與匹配)
     -   [Dinic's algorithm](#dinics-algorithm)
-    -   [Hopcroft-Karp Algorithm](#hopcroft-karp-algorithm)
-    -   [Kuhn-Munkres Algorithm](#kuhn-munkres-algorithm)
+    -   [Kuhn's Algorithm](#kuhns-algorithm)
+    -   [Kuhn-Munkres Algorithm](#kuhnmunkres-algorithm)
     -   [Maximum Flow with Minimum Cost](#maximum-flow-with-minimum-cost)
 
 # 圖論結構
@@ -230,7 +230,7 @@ Finding maximum flow
 -   圖是有向圖
 
 
-## Hopcroft-Karp Algorithm
+## Kuhn's Algorithm
 
 找最大匹配
 
