@@ -1,8 +1,9 @@
 struct BIT {
-  int n, bit[MXN];
+  int n;
+  vector<ll> bit;
   int lowbit(int x) { return x & -x; }
-  BIT(int _n) : n(_n + 1) { memset(bit, 0, sizeof(bit)); }
-  void update(int x, int v) {  // 將 x 的值加上 v
+  BIT(int _n) : n(_n + 1) { bit = vector<ll>(_n + 1, 0); }
+  void update(int x, ll v) {  // 將 x 的值加上 v
     for (; x < n; x += lowbit(x)) bit[x] += v;
   }
   ll query(int x) {  // 查詢區間 [1, x] 的總和
