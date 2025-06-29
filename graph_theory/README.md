@@ -16,6 +16,7 @@
     -   [Kuhn's Algorithm](#kuhns-algorithm)
     -   [Kuhn-Munkres Algorithm](#kuhnmunkres-algorithm)
     -   [Maximum Flow with Minimum Cost](#maximum-flow-with-minimum-cost)
+    -   [Edmonds Blossom Algorithm](#edmonds-blossom-algorithm)
 
 # 圖論結構
 
@@ -294,3 +295,24 @@ $O(V^2~E^2)$，其中 $E$ 是邊數，$V$ 是節點數
 -   注意資料型態 (如果要用 `long long`)
 -   圖必須是 0-base
 -   圖是有向圖
+
+## Edmonds Blossom Algorithm
+
+找一般圖最小權完全匹配
+
+### 用法
+
+1. 呼叫 `blossom::solve(n + 1, e)`
+   其中，`n + 1` 是邊數加一、`e` 是邊 {u, v, w}
+
+### 結果
+
+回傳 weight 與 mactching
+
+### 時間複雜度
+
+據說是 $O(EV^2)$ 或是 $O(V^4)$
+
+### 備注
+
+不常見，僅在 https://atcoder.jp/contests/abc412/tasks/abc412_g 見過
