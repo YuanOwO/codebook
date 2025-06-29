@@ -298,7 +298,7 @@ $O(V^2~E^2)$，其中 $E$ 是邊數，$V$ 是節點數
 
 ## Edmonds Blossom Algorithm
 
-找一般圖最小權完全匹配
+找一般圖最大權完全匹配
 
 ### 用法
 
@@ -315,4 +315,5 @@ $O(V^2~E^2)$，其中 $E$ 是邊數，$V$ 是節點數
 
 ### 備注
 
-不常見，僅在 https://atcoder.jp/contests/abc412/tasks/abc412_g 見過
+- 不常見，僅在 https://atcoder.jp/contests/abc412/tasks/abc412_g 見過
+- 把權重改負的就可以變成最小權
