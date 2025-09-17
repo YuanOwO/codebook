@@ -61,10 +61,10 @@ struct SegmentTree {  // 1-base
   }
   // 區間 [ql, qr] 加值 v
   void update(int ql, int qr, int v) {
-    update(1, 0, n - 1, ql, qr, v);
+    update(1, 1, n, ql, qr, v);
   }
   // 查詢區間 [ql, qr]
   int query(int ql, int qr) {
-    return query(1, 0, n - 1, ql, qr);
+    return query(1, 1, n, ql, qr);
   }
 };
