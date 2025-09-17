@@ -1,21 +1,11 @@
-int failure[MXN];
-vector<int> KMP(string& t, string& p) {
-  vector<int> ret;  // 要保證長度 t > p
-  for (int i = 1, j = failure[0] = -1; i < p.size();
-       ++i) {
-    while (j >= 0 && p[j + 1] != p[i])
-      j = failure[j];
-    if (p[j + 1] == p[i]) j++;
-    failure[i] = j;
-  }
-  for (int i = 0, j = -1; i < t.size(); ++i) {
-    while (j >= 0 && p[j + 1] != t[i])
-      j = failure[j];
-    if (p[j + 1] == t[i]) j++;
-    if (j == p.size() - 1) {
-      ret.push_back(i - p.size() + 1);
-      j = failure[j];
+vector<int> KMP(string s, string t){
+    s = t + '@' + s;
+    int sz = s.size();
+    vector<int> pi(sz);
+    for(int i = 1; i < sz; i++){    
+        int len = pi[i-1];
+        while(len != 0 && s[i] != s[len]) len = pi[len-1];
+        if(s[i] == s[len]) pi[i] = len+1;
     }
-  }
-  return ret;
+    return pi;
 }
