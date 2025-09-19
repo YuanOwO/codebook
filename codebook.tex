@@ -14,10 +14,13 @@
 \usepackage{multicol}
 \usepackage{titlesec}
 \usepackage{xpatch}
+\usepackage{datetime2}    % 日期、時間
 % \usepackage{courier}
 % \usepackage[Glenn]{fncychap}           % 排版，頁面模板
 % \usepackage{CJKulem}
 % \usepackage[T1]{fontenc}
+
+\newcommand{\TEAMNAME}[0]{NTOU: Noneterministic Finite Haruhikage}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -72,7 +75,7 @@
 \renewcommand{\keywordcolor}{\color{black}}
 \renewcommand{\identifiercolor}{\color{black}}
 \renewcommand{\commentcolor}{\color{black!70}}
-\renewcommand{\stringcolor}{\color{black!70}}
+\renewcommand{\stringcolor}{\color{black!50}}
 
 \makeatletter
 \lst@CCPutMacro\lst@ProcessOther {"2D}{\lst@ttfamily{-{}}{-{}}}
@@ -135,7 +138,7 @@
 
 % 頁首、頁尾
 \renewcommand{\headrulewidth}{0.4pt}
-\fancyhead[L]{NTOU: haruhikagerogerokonokositantan (ﾊﾙﾋｶｹﾞﾛｹﾞﾛｺﾉｺｼﾀﾝﾀﾝ)}
+\fancyhead[L]{\TEAMNAME \quad (ver. \DTMnow)}
 \fancyhead[R]{\thepage}
 \fancyfoot{}
 
@@ -164,8 +167,8 @@
 \subsection{Some Useful Primes}
 \inputcpp{basis/primes.cpp}
 
-\subsection{隨機 \& MT19937}
-\inputcpp{basis/mt.cpp}
+\subsection{偽隨機 \& MT19937}
+\inputcpp{basis/rand.cpp}
 
 \subsection{快讀快寫}
 \inputcpp{basis/fast_io.cpp}
@@ -277,6 +280,9 @@ $\varphi(x) = $ 所有小於等於 $x$ 且和 $x$ 互質的數的數量
 % \subsection{Decreate Sqrt}
 % \inputcpp{math/decreate_sqrt.cpp}
 
+\subsection{高斯消去法}
+\inputcpp{math/gaussian_elimination.cpp}
+
 \subsection{約瑟夫問題}
 \inputcpp{math/josephus.cpp}
 
@@ -321,7 +327,10 @@ $\varphi(x) = $ 所有小於等於 $x$ 且和 $x$ 互質的數的數量
 \inputcpp{graph_theory/max_flow_min_cost.cpp}
 
 \subsection{Hungarian Algorithm for Maching}
-\inputcpp{graph_theory/hungarian_algorithm.cpp}
+\inputcpp{graph_theory/kuhn_algorithm.cpp}
+
+\subsection{Hungarian Algorithm for Weighted Maching}
+\inputcpp{graph_theory/kuhn_munkre_algorithm.cpp}
 
 %%%%%
 
@@ -452,7 +461,7 @@ $\rightarrow$ \texttt{dp[3][1]} 則計算 \texttt{6XXX} \\
 
 \section{Miscellaneous}
 
-\subsection{Builtins}
+\subsection{GNU Builtins}
 \inputcpp{misc/__builtins.cpp}
 
 \subsection{Discretization}
@@ -489,7 +498,8 @@ $\rightarrow$ \texttt{dp[3][1]} 則計算 \texttt{6XXX} \\
 
 \subsection{Graph Paper}
 
-\graph{5}{9.4} % 只有半頁
+% \graph{5}{5.4} % 只有半頁
+\graph{10}{13.8} % 一頁 (含標題)
 \clearpage
 \graph{10}{14}
 \clearpage
