@@ -48,6 +48,8 @@
     Extension      = .ttf,
     UprightFont    = *-Regular,
     BoldFont       = *-Bold,
+    ItalicFont     = *-Regular, % 中文沒有斜體
+    BoldItalicFont = *-Bold,    % 中文沒有斜體  
 ]
 
 \setCJKmonofont{NotoSansTC}[  % 中文等寬字體
@@ -55,6 +57,8 @@
     Extension      = .ttf,
     UprightFont    = *-Regular,
     BoldFont       = *-Bold,
+    ItalicFont     = *-Regular, % 中文沒有斜體
+    BoldItalicFont = *-Bold,    % 中文沒有斜體  
 ]
 
 % \setCJKmonofont{LXGWWenKaiMonoTC}[  % 中文等寬字體
@@ -90,7 +94,7 @@
     stepnumber=1,                           % 顯示行號的間隔
     numbersep=5pt,                          % 行號跟 code 的距離
     showspaces=false,                       % 顯示空白 (使用特別的底線記號)
-    showtabs=false,                         % 顯示 Tab
+    showtabs=true,                          % 顯示 Tab
     showstringspaces=false,                 % 顯示字串的空白
     tabsize=2,                              % Tab 的寬度
     frame=leftline,                         % adds a frame around the code
@@ -132,12 +136,48 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% 以編譯時間當版本號
+
+\DTMnewstyle{%
+    version_timestamp%
+} {% date style definition
+    \renewcommand*{\DTMdisplaydate}[4]{%
+        \DTMtwodigits{##1}\DTMtwodigits{##2}\DTMtwodigits{##3}% yymmdd
+    }%
+    \renewcommand*{\DTMDisplaydate}{\DTMdisplaydate}%
+} { % time style definition
+    \renewcommand*{\DTMdisplaytime}[3]{%
+        \DTMtwodigits{##1}\DTMtwodigits{##2}% hhmm
+    }%
+    % \renewcommand*{\DTMDisplaytime}{\DTMdisplaytime}%
+} { % zone style definition
+    \renewcommand*{\DTMdisplayzone}[2]{}% 不顯示時區
+    % \renewcommand*{\DTMDisplayzone}{\DTMdisplayzone}%
+} { % full style definition
+    \renewcommand*{\DTMdisplay}[9]{%
+        \DTMdisplaydate{##1}{##2}{##3}{##4}.\DTMdisplaytime{##5}{##6}{##7}%
+    }%
+    \renewcommand*{\DTMDisplay}{\DTMdisplay}%
+}
+
+% \DTMdisplaydate{year}{month}{day}{dow}
+% \DTMdisplaytime{hour}{minute}{sec}
+% \DTMdisplayzone{TZh}{TZm}
+% \DTMdisplay{year}{month}{day}{dow}{hour}{minute}{sec}{TZh}{TZm}
+% \DTMnewstyle{name}{date style definition}{time style definition}
+%                   {zone style definition}{full style definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{document}
 \pagestyle{fancy}
 
 %%%%%
 
 % 頁首、頁尾
+
+\DTMsetstyle{version_timestamp}
+
 \renewcommand{\headrulewidth}{0.4pt}
 \fancyhead[L]{\TEAMNAME \quad (ver. \DTMnow)}
 \fancyhead[R]{\thepage}
@@ -230,8 +270,8 @@
         pV          & = nTR
     \end{aligned}  \\
     \begin{aligned}[c]
-        a^{\varphi(m)} & \equiv 1 (\mod m)                        \\
-        a^b            & \equiv a^{b \mod \varphi(m)-1} (\mod m)  \\
+        a^{\varphi(m)}  \equiv 1 (\mod m), \quad     &
+        a^b \equiv a^{b \mod \varphi(m)-1} (\mod m)  \\
         \varphi(m)     & = m - 1, \text{When } m \text{ is Prime}
     \end{aligned}
 \end{gather*}
@@ -430,6 +470,7 @@ $\varphi(x) = $ 所有小於等於 $x$ 且和 $x$ 互質的數的數量
 \inputcpp{geometry/AreaOfCircleTriangle.cpp}
 
 \subsection{Area Of Sector}
+$\angle AOB * r^2 / 2$
 \inputcpp{geometry/AreaOfSector.cpp}
 
 \subsection{切線}
@@ -564,13 +605,15 @@ $\rightarrow$ \texttt{dp[3][1]} 則計算 \texttt{6XXX} \\
 
 \subsection{Graph Paper}
 
-% \graph{5}{5.4} % 只有半頁
-\graph{10}{13.8} % 一頁 (含標題)
+% \graph{5}{5.4} % 一小部分
+% \graph{5}{13.8} % 半頁 (含標題)
+\graph{10}{13.8} % 一整頁 (含標題)
+
 \clearpage
 \graph{10}{14}
 \clearpage
-\graph{10}{14}
-\clearpage
+% \graph{10}{14}
+% \clearpage
 % \graph{10}{14}
 % \clearpage
 
