@@ -4,25 +4,20 @@
 struct SegmentTree {  // 1-base
   int n;
   vector<int> seg, tag;
-  SegmentTree(int _n) {  // 空的 SegmentTree
-    n = _n;
-    seg.resize(n * 4);
-    tag.resize(n * 4);
+  SegmentTree(int _n) : n(_n) {  // 空的 SegmentTree
+    seg.resize(n * 4), tag.resize(n * 4);
   }
   void push(int i, int l, int r) {
     if (tag[i] != NO_TAG) {
       seg[i] += tag[i];  // update by tag
-      if (l != r) {
-        tag[cl] += tag[i];  // push
-        tag[cr] += tag[i];  // push
-      }
+      if (l != r)
+        tag[cl] += tag[i], tag[cr] += tag[i];  // push
       tag[i] = 0;
     }
   }
   void pull(int i, int l, int r) {
     int mid = (l + r) >> 1;
-    push(cl, l, mid);
-    push(cr, mid + 1, r);
+    push(cl, l, mid), push(cr, mid + 1, r);
     seg[i] = max(seg[cl], seg[cr]);  // pull (操作改這)
   }
   void build(int i, int l, int r) {
@@ -31,8 +26,7 @@ struct SegmentTree {  // 1-base
       return;
     }
     int mid = (l + r) >> 1;
-    build(cl, l, mid);
-    build(cr, mid + 1, r);
+    build(cl, l, mid), build(cr, mid + 1, r);
     pull(i, l, r);
   }
   void update(int i, int l, int r, int ql, int qr,
@@ -49,9 +43,7 @@ struct SegmentTree {  // 1-base
   }
   int query(int i, int l, int r, int ql, int qr) {
     push(i, l, r);
-    if (ql <= l && r <= qr) {
-      return seg[i];
-    }
+    if (ql <= l && r <= qr) return seg[i];
     int mid = (l + r) >> 1, ans = -INF;
     if (ql <= mid)  // (操作改這)
       ans = max(ans, query(cl, l, mid, ql, qr));

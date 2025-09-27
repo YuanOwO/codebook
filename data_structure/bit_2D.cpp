@@ -13,7 +13,7 @@ struct BIT {
     return ans;
   }
   int range_query(int a, int b, int x, int y) {
-    return query(x, y) - query(x, b - 1) -
-           query(a - 1, y) + query(a - 1, b - 1);
+    return query(x, y) - query(x, b - 1) - query(a - 1, y) +
+           query(a - 1, b - 1);
   }
 } bit;

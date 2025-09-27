@@ -1,6 +1,6 @@
 BasedOnStyle: Google
 
-ColumnLimit: 60
+ColumnLimit: 58
 IndentWidth: 2
 PPIndentWidth: 2
 IndentCaseLabels: false

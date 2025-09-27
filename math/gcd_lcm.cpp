@@ -3,5 +3,4 @@ ll gcd(ll a, ll b) {
     while ((a %= b) && (b %= a)) {}
   return a + b;
 }
-
 ll lcm(ll a, ll b) { return a * b / gcd(a, b); }

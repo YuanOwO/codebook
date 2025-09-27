@@ -16,11 +16,9 @@ struct BIT {
   }
   int kth(int k) {
     int x = 0;
-    for (int i = 1 << __lg(n); i; i >>= 1) {
-      if (x + i <= n && k >= bit[x + i - 1]) {
+    for (int i = 1 << __lg(n); i; i >>= 1)
+      if (x + i <= n && k >= bit[x + i - 1])
         x += i, k -= bit[x - 1];
-      }
-    }
     return x;
   }
 };
