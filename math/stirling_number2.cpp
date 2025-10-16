@@ -1,4 +1,4 @@
-ll dp[MAXN][MAXN];
+ll dp[MXN][MXN];
 ll stirling_number2(int n, int k) {
   memset(dp, 0, sizeof(dp));
   dp[1][1] = 1;

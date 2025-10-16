@@ -3,9 +3,8 @@ ll mul(ll x, ll y, ll mod) {
   return ret < 0 ? ret + mod : ret;
   // return x * y % mod; // for __int128
 }
-
-ll magic[] = {};  // 這邊填入要用於測試的數列
-ll S = 3;         // 測試的數列數字的數量
+ll magic[] = {2, 7, 61};  // 這邊填入要用於測試的數列
+ll S = 3;                 // 測試的數列數字的數量
 bool witness(ll a, ll n, ll u, int t) {
   if (!a) return 0;
   ll x = power(a, u, n);
@@ -25,8 +24,7 @@ bool miller_rabin(ll n) {
   // 將 n - 1 寫成 u * (2 ^ t) 的形式
   ll u = n - 1;
   int t = 0;
-  while (!(u & 1))
-    u >>= 1, t++;
+  while (!(u & 1)) u >>= 1, t++;
 
   while (s--) {
     ll a = magic[s] % n;

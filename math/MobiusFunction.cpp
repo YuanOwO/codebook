@@ -1,6 +1,6 @@
 vector<int> pri;
-bool not_prime[N];
-int mu[N];
+bool not_prime[MXN];
+int mu[MXN];
 
 void pre(int n) {
   mu[1] = 1;

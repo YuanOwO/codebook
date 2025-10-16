@@ -1,11 +1,11 @@
-// isprime, 最大質因數, 質因數數量
-int isPrime[MXN], fac[MXN], num[MXN];
+// notPrime, 最大質因數, 質因數數量
+int notPrime[MXN], fac[MXN], num[MXN];
 void getPrimes() {
-  isPrime[1] = 1, fac[1] = num[1];
+  notPrime[1] = 1, fac[1] = num[1];
   for (int i = 2; i < MXN; ++i) {
-    if (isPrime[i]) continue;
+    if (notPrime[i]) continue;
     for (int j = i; j < MXN; j += i) {
-      if (i != j) isPrime[j] = 1;
+      if (i != j) notPrime[j] = 1;
       fac[j] = i, num[j]++;
     }
   }

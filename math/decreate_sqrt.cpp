@@ -1,11 +1,10 @@
-void calcH(ll &t, ll &h, const ll p) {
+void calcH(ll& t, ll& h, const ll p) {
   ll tmp = p - 1;
-  for (t = 0; (tmp & 1) == 0; tmp /= 2)
-    t++;
+  for (t = 0; (tmp & 1) == 0; tmp /= 2) t++;
   h = tmp;
 }
 // solve equation x^2 mod p = a
-bool solve(ll a, ll p, ll &x, ll &y) {
+bool solve(ll a, ll p, ll& x, ll& y) {
   if (p == 2) {
     x = y = 1;
     return true;

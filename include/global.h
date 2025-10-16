@@ -30,3 +30,6 @@
 // Namespace
 
 using namespace std;
+
+// 其他共用函式、類別
+#include "math.h"

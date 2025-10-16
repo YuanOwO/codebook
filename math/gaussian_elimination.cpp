@@ -4,15 +4,13 @@
  * led[n] 紀錄第 n 列的領導係數的位置
  * 若無解則回傳 false
  */
-ll mat[MAX_N][MAX_N], ans[MAX_N], led[MAX_N];
+ll mat[MXN][MXN], ans[MXN], led[MXN];
 bool gaussian(int n, int m) {
   for (int i = 0; i < n; i++) {  // 高斯消元法
     // 第 i 列的領導項
     while (led[i] <= m && mat[i][led[i]] == 0) led[i]++;
-
     // 當每項係數皆為 0 時，mat_{im} == b_i != 0 => 無解
     if (led[i] == m && mat[i][m] != 0) return false;
-
     int c = led[i];
     for (int j = 0; j < n; j++) {
       // 消掉第 j 列的這項係數，使 mat_{jc} = 0
