@@ -1,13 +1,22 @@
-CC = g++
+UNAME_S := $(shell uname -s)
+
+ifeq ($(UNAME_S), Darwin) # macOS
+	CXX = clang++
+	SANITIZE = -fsanitize=address # macOS does not support ubsan
+else # Linux, Windows, ...
+	CXX = g++
+	SANITIZE = -fsanitize=undefined,address
+endif
+
 SRC = test.cpp
 DST = a.out
-FLAG = -o $(DST) -fsanitize=undefined -std=c++17 -O1 -O2 -Wall -Wextra -Wshadow
+FLAGS = -std=c++17 -O1 -O2 -Wall -Wextra -Wshadow ${SANITIZE} -Iinclude/stdc++.h
 
 all:
-	$(CC) $(SRC) $(FLAG)
+	$(CXX) $(FLAGS) -o $(DST) $(SRC)
 	@echo "編譯完成!"
 
-d:FLAG += -DDEBUG
+d:FLAGS += -DDEBUG
 d:all
 
 run:all
@@ -17,8 +26,5 @@ run:
 
 clean:
 	@rm $(DST)
-
-cls:
-	@clear
 
 r:run
