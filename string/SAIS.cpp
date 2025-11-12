@@ -9,7 +9,7 @@ struct SA {
   int _s[N * 2], _sa[N * 2], _c[N * 2], x[N], _p[N],
       _q[N * 2], hei[N], r[N];
   int operator[](int i) { return _sa[i]; }
-  void build(int *s, int n, int m) {
+  void build(int* s, int n, int m) {
     memcpy(_s, s, sizeof(int) * n);
     sais(_s, _sa, _p, _q, _t, _c, n, m);
     mkhei(n);
@@ -24,8 +24,8 @@ struct SA {
       hei[r[i]] = ans;
     }
   }
-  void sais(int *s, int *sa, int *p, int *q, bool *t,
-            int *c, int n, int z) {
+  void sais(int* s, int* sa, int* p, int* q, bool* t,
+            int* c, int n, int z) {
     bool uniq = t[n - 1] = true, neq;
     int nn = 0, nmxz = -1, *nsa = sa + n, *ns = s + n,
         lst = -1;
@@ -68,7 +68,7 @@ struct SA {
 } sa;
 int H[N], SA[N];  // SA: 後綴陣列的length
                   // H[i]: SA[i]與SA[i -1]的共同子字串長
-void suffix_array(int *ip, int len) {
+void suffix_array(int* ip, int len) {
   // should padding a zero in the back
   // ip is int array, len is array length
   // ip[0..n-1] != 0, and ip[len] = 0
