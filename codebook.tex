@@ -61,6 +61,25 @@
     BoldItalicFont = *-Bold,    % 中文沒有斜體  
 ]
 
+\newfontfamily{\emoji}{NotoEmoji}[  % Emoji 字體
+    Path           = .fonts/Noto_Emoji/,
+    Extension      = .ttf,
+    UprightFont    = *-Regular,
+    BoldFont       = *-Bold,
+]
+
+\newfontfamily{\symbols}{NotoSansSymbols}[
+    Path = .fonts/Noto_Sans_Symbols/,
+    Extension = .ttf,
+    UprightFont = *-Regular,
+    BoldFont = *-Bold,
+]
+\newfontfamily{\symbolstwo}{NotoSansSymbols2}[
+    Path = .fonts/Noto_Sans_Symbols_2/,
+    Extension = .ttf,
+    UprightFont = *-Regular,
+]
+
 % \setCJKmonofont{LXGWWenKaiMonoTC}[  % 中文等寬字體
 % Path           = .fonts/LXGW_WenKai_Mono_TC/,
 % Extension      = .ttf,
@@ -189,7 +208,7 @@
 \renewcommand{\contentsname}{Contents}
 \scriptsize
 \begin{multicols}{2}
-    \tableofcontents
+  \tableofcontents
 \end{multicols}
 
 %%%%%
@@ -247,42 +266,42 @@
 \renewcommand{\mod}{\text{ mod }}
 \subsection{公式們}
 \begin{gather*}
-    \begin{aligned}
-        \sum_{k=1}^{n} n = \frac{n (n+1)}{2}, \quad          &
-        \sum_{k=1}^{n} n^2 = \frac{n (n+1) (2n+1)}{6}, \quad &
-        \sum_{k=1}^{n} n^3 = \bigg[ \frac{n (n+1)}{2} \bigg]^2
-    \end{aligned}  \\
-    \begin{aligned}
-        \sum_{k=1}^{n} n^4 & = n (1+n) (1+2n) (-1 + 3n + 3n^2) \,/\, 30 \\
-        \sum_{k=1}^{n} n^5 & = n^2 (n+1)^2 (2n^2+2n-1) \,/\, 12
-    \end{aligned}  \\
-    \begin{aligned}
-        C_n = \frac{C^{2n}_{n}}{n+1} = \frac{(2n)!}{n! * (n+1)!}
-    \end{aligned}  \\
-    \begin{aligned}
-        \textrm{錯位排列} \qquad &
-        DP_i = \begin{cases}
-                   0 \lor 1,                          & i = 1 \lor 2    \\
-                   (i - 1)(DP_{i-1} \times DP_{i-2}), & i \geq 3        \\
-                   = i DP_{i-1} + (-1)^i              & \textrm{另一種關係式}
-               \end{cases}
-    \end{aligned}  \\
-    \begin{aligned}
-        \textrm{生成樹數量} \qquad n^{n-2} 
-    \end{aligned}  \\
-    \begin{aligned}
-        P_{k}^{n}   & = \frac{n!}{k!(n-k)!},         &
-        C_{k}^{n}   & = \frac{n!}{(n-k)!},           &
-        H_{k}^{n}   & = C_{n - 1}^{n + k -1}           \\
-        \pi         & = \arccos(-1),                 &
-        e^{i\theta} & = \cos \theta + i \sin \theta, &
-        pV          & = nTR
-    \end{aligned}  \\
-    \begin{aligned}[c]
-        a^{\varphi(m)}  \equiv 1 (\mod m), \quad     &
-        a^b \equiv a^{b \mod \varphi(m)-1} (\mod m)  \\
-        \varphi(m)     & = m - 1, \text{When } m \text{ is Prime}
-    \end{aligned}
+  \begin{aligned}
+    \sum_{k=1}^{n} n = \frac{n (n+1)}{2}, \quad          &
+    \sum_{k=1}^{n} n^2 = \frac{n (n+1) (2n+1)}{6}, \quad &
+    \sum_{k=1}^{n} n^3 = \bigg[ \frac{n (n+1)}{2} \bigg]^2
+  \end{aligned}  \\
+  \begin{aligned}
+    \sum_{k=1}^{n} n^4 & = n (1+n) (1+2n) (-1 + 3n + 3n^2) \,/\, 30 \\
+    \sum_{k=1}^{n} n^5 & = n^2 (n+1)^2 (2n^2+2n-1) \,/\, 12
+  \end{aligned}  \\
+  \begin{aligned}
+    C_n = \frac{C^{2n}_{n}}{n+1} = \frac{(2n)!}{n! * (n+1)!}
+  \end{aligned}  \\
+  \begin{aligned}
+    \textrm{錯位排列} \qquad &
+    DP_i = \begin{cases}
+             0 \lor 1,                          & i = 1 \lor 2    \\
+             (i - 1)(DP_{i-1} \times DP_{i-2}), & i \geq 3        \\
+             = i DP_{i-1} + (-1)^i              & \textrm{另一種關係式}
+           \end{cases}
+  \end{aligned}  \\
+  \begin{aligned}
+    \textrm{生成樹數量} \qquad n^{n-2}
+  \end{aligned}  \\
+  \begin{aligned}
+    P_{k}^{n}   & = \frac{n!}{k!(n-k)!},         &
+    C_{k}^{n}   & = \frac{n!}{(n-k)!},           &
+    H_{k}^{n}   & = C_{n - 1}^{n + k -1}           \\
+    \pi         & = \arccos(-1),                 &
+    e^{i\theta} & = \cos \theta + i \sin \theta, &
+    pV          & = nTR
+  \end{aligned}  \\
+  \begin{aligned}[c]
+    a^{\varphi(m)}  \equiv 1 (\mod m), \quad &
+    a^b \equiv a^{b \mod \varphi(m)-1} (\mod m)                                         \\
+    \varphi(m)                               & = m - 1, \text{When } m \text{ is Prime}
+  \end{aligned}
 \end{gather*}
 
 \subsection{階乘 \& 模逆元}
@@ -314,13 +333,13 @@ $\varphi(x) = $ 所有小於等於 $x$ 且和 $x$ 互質的數的數量
 
 \subsection{Miller-Rabin Algorithm}
 \begin{equation*}
-    Magic = \begin{cases}
-        \{2, 7, 61\},           & n < 4,759,123,141     \\
-        \{2, 13, 23, 1662803\}, & n < 1,122,004,669,633 \\
-        \{2, 3, 5, 7, 11, 13\}, & n < 3,474,749,660,383 \\
-        \{2, 325, 9375, 28178,  & n < 2^{64}            \\
-        450775, 9780504, 1795265022\}
-    \end{cases}
+  Magic = \begin{cases}
+    \{2, 7, 61\},           & n < 4,759,123,141     \\
+    \{2, 13, 23, 1662803\}, & n < 1,122,004,669,633 \\
+    \{2, 3, 5, 7, 11, 13\}, & n < 3,474,749,660,383 \\
+    \{2, 325, 9375, 28178,  & n < 2^{64}            \\
+    450775, 9780504, 1795265022\}
+  \end{cases}
 \end{equation*}
 \inputcpp{math/miller_rabin.cpp}
 
@@ -549,9 +568,9 @@ $\angle AOB * r^2 / 2$
 
 \subsection{Pick's Theory}
 \begin{align*}
-    A = i + \frac{b}{2} - 1, \quad &
-    2A = 2i + b - 2, \quad         &
-    i = A - \frac{b}{2} + 1
+  A = i + \frac{b}{2} - 1, \quad &
+  2A = 2i + b - 2, \quad         &
+  i = A - \frac{b}{2} + 1
 \end{align*}
 其中 $A$ 為面積、$b$ 為圖形內部的點數量、$i$ 為圖形線上的點數量
 \inputcpp{geometry/picks_theory.cpp}
@@ -573,11 +592,11 @@ $\rightarrow$ \texttt{dp[pos][1]} 可表示計算 \texttt{pos} 個位數在前�
 $\rightarrow$ \texttt{dp[3][1]} 則計算 \texttt{6XXX} \\
 模板的 \texttt{pos} 是反過來的，但不影響 (只是用來 \texttt{dp} 記憶用) \\
 \begin{tabular}{l l}
-    \texttt{pos}:   & 目前位數                                         \\
-    \texttt{state}: & 前導狀態                                         \\
-    \texttt{lead}:  & 是否有前導 \texttt{0}                             \\
-                    & (大部分題目不用但有些數字 e.g. \texttt{00146} 如果有影響時要考慮) \\
-    \texttt{limit}: & 使否窮舉有被 \texttt{num} 限制                       \\
+  \texttt{pos}:   & 目前位數                                         \\
+  \texttt{state}: & 前導狀態                                         \\
+  \texttt{lead}:  & 是否有前導 \texttt{0}                             \\
+                  & (大部分題目不用但有些數字 e.g. \texttt{00146} 如果有影響時要考慮) \\
+  \texttt{limit}: & 使否窮舉有被 \texttt{num} 限制                       \\
 \end{tabular}
 \inputcpp{DP/digit.cpp}
 
@@ -598,8 +617,8 @@ $\rightarrow$ \texttt{dp[3][1]} 則計算 \texttt{6XXX} \\
 
 \section{Miscellaneous}
 
-\subsection{GNU Builtins}
-\inputcpp{misc/__builtins.cpp}
+% \subsection{GNU Builtins}
+% \inputcpp{misc/__builtins.cpp}
 
 \subsection{Discretization}
 \inputcpp{misc/discretization.cpp}
@@ -615,24 +634,43 @@ $\rightarrow$ \texttt{dp[3][1]} 則計算 \texttt{6XXX} \\
 
 \subsection{Blessing}
 \inputcpp{misc/blessing1.cpp}
-\inputcpp{misc/blessing2.cpp}
-\inputcpp{misc/blessing3.cpp}
-<<<<<<< HEAD
-% \inputcpp{misc/blessing4.cpp}
+% \inputcpp{misc/blessing2.cpp}
+% \inputcpp{misc/blessing3.cpp}
+
+% \columnbreak
+
+
+\symbolstwo{
+  \input{misc/blessing4.txt}
+}
+
+\noindent
+a\\
+a\\
+a\\
+a\\
+a\\
+a\\
+a\\
+
+\symbolstwo{
+  \noindent
+  \input{misc/pikachu.txt}
+}
 % \inputcpp{misc/soyo.cpp}
 \inputtxt{misc/acac.txt}
 \includegraphics[width=10cm]{misc/apple.png}
-\includegraphics[width=5cm, height=5cm]{misc/bean.jpg}
+% \includegraphics[width=5cm, height=5cm]{misc/bean.jpg}
 
 %%%%%
 
 % 產生方格紙 \graph{寬度 (X)}{高度 (Y)}
 \newcommand{\graph}[2]{
-    \noindent
-    \begin{tikzpicture}[every node/.style={minimum size=1cm-\pgflinewidth, outer sep=10pt}, scale=2]
-        \draw[step=0.2cm, color=gray] (0, 0) grid (#1, #2);
-        \draw[step=1cm, color=black, line width=0.4mm] (0, 0) grid (#1, #2);
-    \end{tikzpicture}
+  \noindent
+  \begin{tikzpicture}[every node/.style={minimum size=1cm-\pgflinewidth, outer sep=10pt}, scale=2]
+    \draw[step=0.2cm, color=gray] (0, 0) grid (#1, #2);
+    \draw[step=1cm, color=black, line width=0.4mm] (0, 0) grid (#1, #2);
+  \end{tikzpicture}
 }
 
 % \clearpage
@@ -640,7 +678,7 @@ $\rightarrow$ \texttt{dp[3][1]} 則計算 \texttt{6XXX} \\
 \subsection{Graph Paper}
 
 % \graph{5}{5.4} % 一小部分
-% \graph{5}{13.8} % 半頁 (含標題)
+% \graph{5}{5} % 半頁 (含標題)
 \graph{10}{13.8} % 一整頁 (含標題)
 
 \clearpage
