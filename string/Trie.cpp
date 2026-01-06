@@ -1,4 +1,4 @@
-struct trie{
+struct Trie{
     struct node{
         node *nxt[26];
         int cnt, sz;
@@ -7,7 +7,7 @@ struct trie{
         }
     };
     node *root;
-    void init(){root = new node();}
+    Trie(){ root = new node();}
     void insert(const string& s){
         node *now = root;
         for(auto i:s){
@@ -20,4 +20,4 @@ struct trie{
         now->cnt++;
         now->sz++;
     }
-};
+} trie;
