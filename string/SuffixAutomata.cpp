@@ -1,14 +1,15 @@
 /*最多有2n-1個狀態、3n-4個轉移，
 parent tree上父節點是子節點的後綴，且endpos集合=所有子節點的endpos，
 節點代表的字串個數是len(v)-len(link(v))，
-常用對len大到小去拓排(葉到根)代替dfs，建構SAM時用static*/
+常用對len大到小去拓排(葉到根)代替dfs*/
 const int MXN = 200005;
 struct SAM {
     struct State {
         int len, link, sz;
         int next[26];
-    } st[MXN];
+    } st[MXN<<1];
     int sz, last;
+    int cnt[MXN<<1], idx[MXN<<1];
     SAM(){
         st[0].len = 0;
         st[0].link = -1;
@@ -17,8 +18,8 @@ struct SAM {
         sz = 1;
         last = 0;
     }
-    SAM(string &s): SAM(){
-        for(char ch : s) add(ch-'A');
+    void push(string& s){
+        for(auto c : s) add(c-'a');
     }
     void add(int ch) {
         int cur = sz++;
@@ -51,7 +52,6 @@ struct SAM {
         last = cur;
     }
     void calc_endpos(){ // counting sort + bfs
-        static int cnt[MXN], idx[MXN];
         int max_len = 0;
         for(int i = 0; i < sz; i++){
             max_len = max(max_len, st[i].len);
@@ -65,4 +65,16 @@ struct SAM {
             if(f != -1) st[f].sz += st[u].sz;
         }
     }
-};
+    void trans(string& t){
+        int cur = 0, step = 0;
+        for(int i = 0; i < t.size(); i++){
+            int ch = t[i] - 'a';
+            while(cur != -1 && st[cur].next[ch] == -1){
+                cur = st[cur].link;
+                if(cur != -1) step = st[cur].len;
+            }
+            if(cur == -1) cur = 0, step = 0;
+            else cur = st[cur].next[ch], step++;
+        }
+    }
+} sam;
