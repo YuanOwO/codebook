@@ -1,8 +1,8 @@
 // gcd(a, n) = 1, 算 a^x == b (mod n)
 ll BSGS(ll a, ll b, ll n) {
   a %= n, b %= n;
-  if (b == 1) return 0;  // a^0 = 1
-  ll m = (ll)sqrt(n);
+  if (b == 1) return 0;    // a^0 = 1
+  ll m = (ll)sqrt(n) + 1;  // 保險一點
   unordered_map<ll, ll> mp;
 
   // 拆成 a^{i * m} == b * a^j (mod n)
