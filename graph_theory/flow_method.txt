@@ -1,0 +1,22 @@
+【二分圖定理】(M = Max Matching)
+  • Min Vertex Cover (MVC) = M
+  • Max Independent Set (MIS) = |V| - M
+  • Min Edge Cover = |V| - M
+注意 : LP 對偶提醒：Min Cut = Max Flow，遇到 Min/Max 轉換卡關時，寫出標準型轉 Dual。
+【找二分圖 MVC & MIS 成員】
+  跑完 Dinic 後，在殘留網路上從 Source 走「Cap > 0」的邊進行 DFS/BFS：
+  • MVC = (左側未 visit 的點) U (右側有 visit 的點)
+  • MIS = (左側有 visit 的點) U (右側未 visit 的點) (即為 MVC 的補集)
+【最大密度子圖】 密度 D = (ΣW_e + ΣW_v) / |V'|
+  對答案 D 進行二分搜。取極大常數 S = Σ(所有權重) 或 inf，確保邊權非負。
+  建圖規則 (Cap)：
+  1. S -> 點 v : S
+  2. 原圖無向邊 (u, v, w) : 建雙向邊 u -> v 及 v -> u，Cap = w
+  3. 點 v -> T : S + 2*D - deg[v] - 2*W_v
+    (註：deg[v] 為與 v 相連的「邊權重」總和)
+  判定與找成員：
+  • 若 Max Flow < S * |V|，代表存在密度 > D 的子圖 (D 可繼續往上搜)。
+  • 找子圖成員：跑完後從 S 走「Cap > 0」的邊，能到達的點集即為所求。
+【PSP】
+  全部可能的收益 - Min Cut = 最大收益
+  做完 B 實驗才能做 A 實驗，則 A -> B

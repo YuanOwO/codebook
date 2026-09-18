@@ -21,7 +21,7 @@
 % \usepackage[T1]{fontenc}
 
 % 隊伍名稱
-\newcommand{\TEAMNAME}[0]{NTOU: Nondeterministic Haruhikage Player}
+\newcommand{\TEAMNAME}[0]{Gugachad Lemma}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -301,7 +301,27 @@
     a^{\varphi(m)}  \equiv 1 (\mod m), \quad &
     a^b \equiv a^{b \mod \varphi(m)-1} (\mod m)                                         \\
     \varphi(m)                               & = m - 1, \text{When } m \text{ is Prime}
-  \end{aligned}
+  \end{aligned} \\
+  \begin{aligned}
+    \mu(n) = 
+    \begin{cases} 
+      1&, n = 1\\
+      (-1)^k &,n = p_1p_2\cdots p_k \text{ (沒平方項)} \\ 
+      0 & ,\text{otherwise}
+      \end{cases}
+    , \quad (f*g)(n)=\sum_{d|n}f(d)g\left(\frac{n}{d}\right)
+  \end{aligned}  \\ 
+  \begin{aligned}
+    \mu*1=\epsilon & \quad \mu*f=g & \quad \varphi=\mu * \text{Id} & \quad \varphi*1=\text{Id}
+  \end{aligned}  \\
+  \begin{aligned}
+    \sum_{i=1}^N\sum_{j=1}^M [\gcd(i,j)=1]
+    =\sum_{d=1}^N \mu(d)\left\lfloor\frac{M}{d}\right\rfloor\left\lfloor\frac{N}{d}\right\rfloor
+  \end{aligned}  \\
+  \begin{aligned}
+    \sum_{i=1}^N\sum_{j=1}^M \gcd(i,j)
+    =\sum_{T=1}^{\min(N,M)} \phi(T) \lfloor \frac{N}{T} \rfloor \lfloor \frac{M}{T} \rfloor
+  \end{aligned}  \\
 \end{gather*}
 
 \subsection{階乘 \& 模逆元}
@@ -323,6 +343,9 @@ $ax + by = gcd(a, b)$
 \subsection{FFT}
 使用前要先跑過 \texttt{pre\_fft()}；\texttt{n} 必須是 $2^k$。
 \inputcpp{math/fast_fourier_transform.cpp}
+
+\subsection{NTT}
+\inputcpp{math/number_theoretic_transform.cpp}
 
 \subsection{質數表}
 \inputcpp{math/primes_table.cpp}
@@ -360,6 +383,9 @@ $\varphi(x) = $ 所有小於等於 $x$ 且和 $x$ 互質的數的數量
 
 \subsection{離散根號}
 \inputcpp{math/discrete_sqrt.cpp}
+
+\subsection{XOR Basis}
+\inputcpp{math/xor_basis.cpp}
 
 %%%%%
 
@@ -404,8 +430,11 @@ $\varphi(x) = $ 所有小於等於 $x$ 且和 $x$ 互質的數的數量
 \subsection{Max-flow-min-cost}
 \inputcpp{graph_theory/max_flow_min_cost.cpp}
 
-\subsection{Kuhn Algorithm for Maching}
+\subsection{Kuhn's Algorithm}
 \inputcpp{graph_theory/kuhn_algorithm.cpp}
+
+\subsection{Flow Methods}
+\inputtxt{graph_theory/flow_method.txt}
 
 %%%%%
 
