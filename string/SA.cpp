@@ -3,7 +3,7 @@ struct SA {
     vector<int> rk, oldrk, sa, h;
     string s;
     SA(string &t): s(t), n(t.size()), rk(n<<1), oldrk(n<<1), sa(n), h(n) {
-        for(int i = 0; i < n; i++) rk[i] = s[i]-'a'+1, sa[i] = i;
+        for(int i = 0; i < n; i++) rk[i] = s[i], sa[i] = i;
 
         if (n == 1) {
             rk[0] = 1; 
