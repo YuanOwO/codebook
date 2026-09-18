@@ -10,14 +10,24 @@ int _phi(int n) {  // O(sqrtN)
   return res;
 }
 
-int phi[MXN];  // 建表 最大 1e7
+int phi[MXN]; // 線性篩打表
 void phi_table(int n) {
+  is_prime[0] = is_prime[1] = false;
   phi[1] = 1;
-  for (int i = 2; i <= n; ++i) {
-    if (phi[i]) continue;
-    for (int j = i; j <= n; j += i) {
-      if (phi[j] == 0) phi[j] = j;
-      phi[j] = phi[j] / i * (i - 1);
+  for(int i = 2; i <= n; ++i) {
+    if(is_prime[i]) {
+      primes.push_back(i);
+      phi[i] = i - 1;
+    }
+    for(int p : primes){
+      if(1LL*i*p > n) break; 
+      is_prime[i * p] = false;
+      if(i % p == 0) {
+        phi[i * p] = phi[i] * p;
+        break; 
+      } else {
+        phi[i * p] = phi[i] * (p - 1);
+      }
     }
   }
 }
