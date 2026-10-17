@@ -230,6 +230,9 @@
 \subsection{偽隨機 \& MT19937}
 \inputcpp{basis/rand.cpp}
 
+\subsection{對拍 code}
+\inputtxt{basis/check.txt}
+
 \subsection{快讀快寫}
 \inputcpp{basis/fast_io.cpp}
 
@@ -390,6 +393,36 @@ $\varphi(x) = $ 所有小於等於 $x$ 且和 $x$ 互質的數的數量
 %%%%%
 
 \section{Graph}
+
+\subsection{建圖方法}
+\begin{gather*}
+  \begin{aligned}
+    \textrm{2-SAT 建圖} \qquad
+    \begin{cases}
+      \neg a \vee b \textrm{ 轉 } a \to b \textrm{ 和 } \neg a \to \neg b \\
+      a \vee b \textrm{ 轉 } \neg a \to b \textrm{ 和 } \neg b \to a \\
+      \neg a \vee \neg b \textrm{ 轉 } a \to \neg b \textrm{ 和 } a \to \neg b \\
+    \end{cases}
+  \end{aligned}  \\
+  \begin{aligned}
+    \textrm{2-SAT 求解} \qquad
+    \begin{cases}
+    \textrm{scc.bln[i] > scc.bln[not i] : } x_i \textrm{ 為 True} \\
+    \textrm{scc.bln[not i] > scc.bln[i] : } x_i \textrm{ 為 False} \\
+    \textrm{否則無解}
+    \end{cases}
+  \end{aligned}   \\
+\end{gather*}
+\begin{gather*}
+  \begin{aligned}
+    \textrm{差分約束建圖} \qquad
+    \begin{cases}
+      x_a - x_b \le c \quad \textrm{add(b, a, c)} \\
+      x_a - x_b \ge c \quad \textrm{add(a, b, -c)} \\
+      x_a = x_b \quad \textrm{add(a, b, 0) and add(b, a, 0)} \\
+    \end{cases}
+  \end{aligned}
+\end{gather*}
 
 \subsection{Topological Sort}
 \inputcpp{graph_theory/topological_sort.cpp}
@@ -679,7 +712,7 @@ $\rightarrow$ \texttt{dp[3][1]} 則計算 \texttt{6XXX} \\
 \inputpy{misc/fraction.py}
 
 \subsection{Blessing}
-\inputcpp{misc/blessing1.cpp}
+% \inputcpp{misc/blessing1.cpp}
 % \inputcpp{misc/blessing2.cpp}
 % \inputcpp{misc/blessing3.cpp}
 

@@ -1,0 +1,20 @@
+# chmod +x check.sh 給予執行權限
+# 執行 ./check.sh 
+#!/bin/bash
+g++ gen.cpp -o gen -O2    # 生測資
+g++ sol.cpp -o sol -O2    # 你的扣
+g++ slow.cpp -o slow -O2  # 很慢但會 AC 的扣
+
+for ((i=1; ; ++i)); do
+    ./gen > in
+    ./sol < in > out
+    ./slow < in > ans
+    
+    # -w 忽略空白字元 避免 Presentation Error 
+    if diff -w out ans > /dev/null; then
+        echo "Pass: $i"
+    else
+        echo "WA on test $i"
+        break
+    fi
+done
