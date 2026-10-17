@@ -1,8 +1,8 @@
 // Remember coefficient are mod P
 /* p=a*2^n+1
-   n		2^n 				p 				 a 		root
-   16 	65536 			65537 		 1 		3
-   20 	1048576		 	7340033 	 7 		3 */
+   n    2^n         p          a    root
+   16   65536       65537      1    3
+   20   1048576     7340033    7    3 */
 // (must be 2^k)
 template <LL P, LL root, int MAXN>
 struct NTT {
