@@ -379,6 +379,20 @@ $\varphi(x) = $ 所有小於等於 $x$ 且和 $x$ 互質的數的數量
 \inputcpp{math/josephus.cpp}
 
 \subsection{莫比烏斯函數}
+\begin{align*}
+  \mu(n) = \begin{cases} 1 & n = 1                            \\
+    (-1)^m & k_1 = k_2 = \cdots = k_m = 1 \text{ (無平方因子)}   \\
+    0 & \text{存在 } k_i > 1 \text{ (有平方因子)} \end{cases}
+\end{align*}
+\begin{align*}
+  f(n) = \sum_{d \mid n} g(d) \iff g(n) = \sum_{d \mid n} \mu(d) f\left(\frac{n}{d}\right) \\
+  f(n) = \sum_{n \mid d} g(d) \iff g(n) = \sum_{n \mid d} \mu\left(\frac{d}{n}\right) f(d)
+\end{align*}
+\begin{align*}
+  \sum_{d \mid n} \mu(d) = [n = 1] = \epsilon(n)      \\
+  [\gcd(i, j) = 1] = \sum_{d \mid \gcd(i, j)} \mu(d)  \\
+  \sum_{d \mid n} \frac{\mu(d)}{d} = \frac{\phi(n)}{n} \quad \text{或} \quad \phi(n) = \sum_{d \mid n} \mu(d) \frac{n}{d}
+\end{align*}
 \inputcpp{math/MobiusFunction.cpp}
 
 \subsection{離散對數}
