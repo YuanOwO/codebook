@@ -278,6 +278,8 @@
     \sum_{k=1}^{n} n^4 & = n (1+n) (1+2n) (-1 + 3n + 3n^2) \,/\, 30 \\
     \sum_{k=1}^{n} n^5 & = n^2 (n+1)^2 (2n^2+2n-1) \,/\, 12
   \end{aligned}  \\
+\end{gather*}
+\begin{gather*}
   \begin{aligned}
     C_n = \frac{C^{2n}_{n}}{n+1} = \frac{(2n)!}{n! * (n+1)!}
   \end{aligned}  \\
@@ -300,7 +302,10 @@
     e^{i\theta} & = \cos \theta + i \sin \theta, &
     pV          & = nTR
   \end{aligned}  \\
+\end{gather*}
+\begin{gather*}
   \begin{aligned}[c]
+    \varphi(n)=n\prod_{j=1}^r \left(1-\frac{1}{p_j}\right), &  n=p_1^{k_1}p_2^{k_2}\cdots p_r^{k_r}\\
     a^{\varphi(m)}  \equiv 1 (\mod m), \quad &
     a^b \equiv a^{b \mod \varphi(m)-1} (\mod m)                                         \\
     \varphi(m)                               & = m - 1, \text{When } m \text{ is Prime}
@@ -315,7 +320,9 @@
     , \quad (f*g)(n)=\sum_{d|n}f(d)g\left(\frac{n}{d}\right)
   \end{aligned}  \\ 
   \begin{aligned}
-    \mu*1=\epsilon & \quad \mu*f=g & \quad \varphi=\mu * \text{Id} & \quad \varphi*1=\text{Id}
+    [\gcd(i, j) = 1] = \sum_{d \mid \gcd(i, j)} \mu(d), \quad \sigma(n)=\sum_{d|n}d  \\
+    \epsilon(n) = [n=1], \quad \text{Id}(n)=n, \quad 1(n)=1 \\
+    \mu*1=\epsilon, \quad \mu*f=g, \quad \varphi=\mu * \text{Id}, \quad \varphi*1=\text{Id} \\
   \end{aligned}  \\
   \begin{aligned}
     \sum_{i=1}^N\sum_{j=1}^M [\gcd(i,j)=1]
@@ -323,7 +330,7 @@
   \end{aligned}  \\
   \begin{aligned}
     \sum_{i=1}^N\sum_{j=1}^M \gcd(i,j)
-    =\sum_{T=1}^{\min(N,M)} \phi(T) \lfloor \frac{N}{T} \rfloor \lfloor \frac{M}{T} \rfloor
+    =\sum_{T=1}^{\min(N,M)} \phi(T) \left\lfloor \frac{N}{T} \right\rfloor \left\lfloor \frac{M}{T} \right\rfloor
   \end{aligned}  \\
 \end{gather*}
 
@@ -342,6 +349,9 @@ $ax + by = gcd(a, b)$
 
 \subsection{矩陣乘法}
 \inputcpp{math/mat_mul.cpp}
+
+\subsection{多項式 and 操作}
+\inputcpp{math/poly_basic.cpp}
 
 \subsection{FFT}
 使用前要先跑過 \texttt{pre\_fft()}；\texttt{n} 必須是 $2^k$。
@@ -379,20 +389,6 @@ $\varphi(x) = $ 所有小於等於 $x$ 且和 $x$ 互質的數的數量
 \inputcpp{math/josephus.cpp}
 
 \subsection{莫比烏斯函數}
-\begin{align*}
-  \mu(n) = \begin{cases} 1 & n = 1                            \\
-    (-1)^m & k_1 = k_2 = \cdots = k_m = 1 \text{ (無平方因子)}   \\
-    0 & \text{存在 } k_i > 1 \text{ (有平方因子)} \end{cases}
-\end{align*}
-\begin{align*}
-  f(n) = \sum_{d \mid n} g(d) \iff g(n) = \sum_{d \mid n} \mu(d) f\left(\frac{n}{d}\right) \\
-  f(n) = \sum_{n \mid d} g(d) \iff g(n) = \sum_{n \mid d} \mu\left(\frac{d}{n}\right) f(d)
-\end{align*}
-\begin{align*}
-  \sum_{d \mid n} \mu(d) = [n = 1] = \epsilon(n)      \\
-  [\gcd(i, j) = 1] = \sum_{d \mid \gcd(i, j)} \mu(d)  \\
-  \sum_{d \mid n} \frac{\mu(d)}{d} = \frac{\phi(n)}{n} \quad \text{或} \quad \phi(n) = \sum_{d \mid n} \mu(d) \frac{n}{d}
-\end{align*}
 \inputcpp{math/MobiusFunction.cpp}
 
 \subsection{離散對數}
